@@ -20,7 +20,7 @@ function Player(name, map) {
                 }
             }
         } else {
-            systemLog(`${this.name} can't move. he passed away.`);
+            systemLog(`${this.name} can't move. he passed out.`);
             
         }
     };

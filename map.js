@@ -16,7 +16,7 @@ function Grass() {
             if(player.health > 0) {
                 systemLog(`${player.name} has been stung by a bug. health ${player.health}%`);
             } else {
-                systemLog(`${player.name} has been stung by a bug. he didn't make it :(`);
+                systemLog(`${player.name} has been stung by a bug. he passed out.`);
             }
             
         }
