@@ -1,6 +1,10 @@
 # simple-rpg
 Project I started to train a little bit JavaScript OOP
 
+# Demo
+Demo can be found here ✨
+https://marc.dev/demo/rpg/
+
 # What is this?
 A friend of mine who is studying CS told me about a project he's working on in school. A web-based role playing game. I remembered when I was studying, we had a similar project, C++ based. It was tons of fun, and I wanted to do it again, this time web-based.
 
