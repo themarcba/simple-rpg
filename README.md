@@ -16,3 +16,7 @@ At the moment you can only create a map with 3 different "field" types (road, gr
 You can walk on the road and the grass, but not on the wall.
 
 When you walk in the grass, there is a 50% chance that a bug attacks you. If this happens, your health decreases by 20%.
+
+Using ES6 classes now. Will use them as modules, when I figure out how.
+
+Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
