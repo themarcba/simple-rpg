@@ -20,3 +20,23 @@ When you walk in the grass, there is a 50% chance that a bug attacks you. If thi
 Using ES6 classes now. Will use them as modules, when I figure out how.
 
 Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
+
+# Install
+
+Install needed packages:
+
+```
+yarn install
+```
+
+Compile JS for production
+
+```
+yarn run build
+```
+
+Compile JS for development with watch function
+
+```
+yarn run build-dev
+```

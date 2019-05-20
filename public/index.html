@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simple-rpg</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body style="background-color: #333; color: #fff;">
+
+<div class="game-controls">
+
+    <table>
+
+        <tr>
+            <td></td>
+            <td>
+                <button class="movement-button" data-direction="north">move north</button>
+            </td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>
+                <button class="movement-button" data-direction="east">move east</button>
+            </td>
+            <td></td>
+            <td>
+                <button class="movement-button" data-direction="west">move west</button>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <button class="movement-button" data-direction="south">move south</button>
+            </td>
+            <td></td>
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="game-logs"></div>
+
+    <br>
+
+    <script src="./bundle.js"></script>
+    <script>
+
+        (function(){
+            let game = new Game('marc');
+        })();
+
+    </script>
+
+    </body>
+</html>
