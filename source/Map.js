@@ -1,9 +1,22 @@
-class Map {
+export default class Map {
 
-	constructor(fields) {
-        this.fields = [];
+    /**
+     *
+     * @param fields
+     */
+    constructor(fields) {
+
+        this.fields = fields;
+
     }
-    
+
+    /**
+     *
+     * @param coordX
+     * @param coordY
+     * @param {Field} FieldClass
+     * @returns {*}
+     */
     addField(coordX, coordY, FieldClass) {
         // create row if it doesn't exist
         if(!this.fields[coordX]) {
@@ -35,15 +48,18 @@ class Map {
         return newField;
     }
 
+    /**
+     *
+     */
     printFields() {
         let body = document.querySelector('body');
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
             console.log(i, fieldI.length);
-            
+
             for (let j = 0; j < fieldI.length; j++) {
                 console.log(j);
-                
+
                 const fieldJ = this.fields[i][j];
                 body.innerHTML += this.fields[i][j].constructor.name.charAt(0);
             }
@@ -51,35 +67,46 @@ class Map {
         }
     }
 
-	setSpawnPoint(field) {
-		this.spawnPoint = field;
-	}
-
-	connectFields (field1, field2, side) {
-		switch (side) {
-			case 'north':
-				field1.north = field2;
-				field2.south = field1;
-				break;
-			case 'east':
-				field1.east = field2;
-				field2.west = field1;
-				break;
-			case 'south':
-				field1.south = field2;
-				field2.north = field1;
-				break;
-			case 'west':
-				field1.west = field2;
-				field2.east = field1;
-				break;
-
-			default:
-				break;
-		}
-
-		this.fields.forEach((field, index) => {
-			field.id = index;
-		});
+    /**
+     *
+     * @param field
+     */
+    setSpawnPoint(field) {
+        this.spawnPoint = field;
     }
+
+    /**
+     *
+     * @param field1
+     * @param field2
+     * @param side
+     */
+    connectFields (field1, field2, side) {
+        switch (side) {
+            case 'north':
+                field1.north = field2;
+                field2.south = field1;
+                break;
+            case 'east':
+                field1.east = field2;
+                field2.west = field1;
+                break;
+            case 'south':
+                field1.south = field2;
+                field2.north = field1;
+                break;
+            case 'west':
+                field1.west = field2;
+                field2.east = field1;
+                break;
+
+            default:
+                break;
+        }
+
+        this.fields.forEach((field, index) => {
+            field.id = index;
+        });
+    }
+
 }

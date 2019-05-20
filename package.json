@@ -1,0 +1,19 @@
+{
+  "name": "simple-rpg",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "webpack --config webpack.dist.config.js",
+    "build-dev": "webpack --config webpack.dev.config.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-object-rest-spread": "0.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.6.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

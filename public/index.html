@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simple-rpg</title>
+</head>
+<body style="background-color: #333; color: #fff;">
+
+    <button onclick="myplayer.move('north');">move north</button>
+    <button onclick="myplayer.move('south');">move south</button>
+    <br>
+
+    <script src="../dist/game.js"></script>
+    <script>
+
+        // create var outside js scope below - alternative w
+        let myplayer;
+
+        (function(){
+
+            let fields = [
+                new Road(),
+                new Grass(),
+                new Road(),
+                new Wall()
+            ];
+
+            let map = new Map(fields);
+            map.addField(0,0,Road);
+            map.addField(1,0,Road);
+            map.addField(2,0,Road);
+            map.addField(0,1,Grass);
+            map.addField(1,1,Wall);
+            map.addField(2,1,Wall);
+            map.addField(0,2,Road);
+            map.addField(1,2,Road);
+            map.addField(2,2,Road);
+            map.printFields();
+            map.setSpawnPoint(map.fields[0][0]);
+
+            myplayer = new Player('marc', map);
+
+        })();
+
+    </script>
+
+    </body>
+</html>
