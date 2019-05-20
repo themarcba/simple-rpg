@@ -4,11 +4,12 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-	entry: './source/game.js',
+	entry: './source/Game.js',
     output: {
-        path: path.resolve(__dirname, 'dist/'),
-        filename: 'game.js',
-        libraryTarget: 'window'
+        path: path.resolve(__dirname, 'public/'),
+        filename: 'bundle.js',
+        library: 'Game',
+        libraryTarget : 'var'
     },
     module: {
         loaders: [

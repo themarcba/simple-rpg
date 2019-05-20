@@ -55,10 +55,10 @@ export default class Map {
         let body = document.querySelector('body');
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
-            console.log(i, fieldI.length);
+            //console.log(i, fieldI.length);
 
             for (let j = 0; j < fieldI.length; j++) {
-                console.log(j);
+                //console.log(j);
 
                 const fieldJ = this.fields[i][j];
                 body.innerHTML += this.fields[i][j].constructor.name.charAt(0);
