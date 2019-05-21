@@ -30,14 +30,14 @@ export default class Player {
 				}
 			} else {
 				if (this.currentField[direction] && !this.currentField[direction].canMove) {
-					SystemLog.write(`can't move here. ${this.currentField[direction].cantMoveReason}`);
+					SystemLog.write(`🚫 can't move here. ${this.currentField[direction].cantMoveReason}`);
 				} else {
-					SystemLog.write(`can't move here. there is nothing there.`);
+					SystemLog.write(`🚫 can't move here. there is nothing there.`);
 				}
 			}
 
 		} else {
-			SystemLog.write(`${this.name} can't move. he passed out.`);
+			SystemLog.write(`😵 ${this.name} can't move. he passed out.`);
         }
 
         this.printPlayer();
