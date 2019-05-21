@@ -56,11 +56,8 @@ export default class Player {
     }
 
 	hurt(damage, reason){
-
-		this.health -= damage; // TODO : check if 0 and "die" if so :P
-
+        this.health > damage ? this.health -= damage : this.health = 0;
 		SystemLog.write(`${reason} - health :${this.health}`);
-
 	}
 
 }
