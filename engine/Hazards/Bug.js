@@ -5,7 +5,7 @@ export default class Bug extends Hazards {
         super();
         this.name = 'bug';
         this.damage = 20;
-        this.damageReason = 'stong by bog';
+        this.damageReason = 'stung by bug';
         this.probability = 0.5;
     }
 }
