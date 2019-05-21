@@ -1,5 +1,6 @@
 
 import Field from './Field';
+import Bug from '../Hazards/Bug.js';
 
 export default class Grass extends Field {
     constructor(coordX, coordY) {
@@ -8,8 +9,7 @@ export default class Grass extends Field {
     }
 
     enterAction(player) {
-        if(Math.random() > 0.5) { // probability to get stung by bug ~50%
-            player.hurt(20, 'stung by bug');
-        }
+        let bug = new Bug();
+        bug.hurt(player);
     }
 }

@@ -11,21 +11,24 @@ A friend of mine who is studying CS told me about a project he's working on in s
 In the spirit of working more with OOP in JavaScript, I started this little project. I don't know yet where it is going, just playing around here.
 
 # Status
-At the moment you can only create a map with 3 different "field" types (road, grass, wall) and walk around in it.
+You can create a map with 4 different "field" types (road, grass, wall, water) and walk around in it.
 
-You can walk on the road and the grass, but not on the wall.
+* Road: Normal walk
+* Grass: Walk, but 50% risk of getting stung by a bug
+* Wall: Can't walk. Is seen as obstacle
+* Water: Can technically walk on it, but will drown if the player can't swim
 
-When you walk in the grass, there is a 50% chance that a bug attacks you. If this happens, your health decreases by 20%.
+# Changelog
+* **20/05.2019** Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
 
-Using ES6 classes now. Will use them as modules, when I figure out how.
+* **20/05.2019** Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
 
-Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
+* **21.05.2019** Added now canvas graphics and arrow key control.
 
-Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
+* **21.05.2019** Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
 
-Added now canvas graphics and arrow key control.
 
-Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
+* **21.05.2019** Created an abstraction *Hazard* which has properties such as *damage* and *probability*. Can be added more functionality later. Used as such: `bug.hurt(player);`
 
 # Install
 

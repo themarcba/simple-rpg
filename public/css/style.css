@@ -7,12 +7,12 @@ canvas {
 }
 canvas#map {
     border: solid tomato 2px;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
 }
 
 canvas#player {
     border: solid tomato 2px;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height: 500px;
 }

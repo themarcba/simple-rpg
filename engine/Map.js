@@ -23,6 +23,7 @@ export default class Map {
         if (!this.fields[coordX]) {
             this.fields[coordX] = [];
         }
+        
         let newField = this.fields[coordY][coordX] = new FieldClass(coordX, coordY);
 
         // row above (Y-1), same X
@@ -71,8 +72,8 @@ export default class Map {
     printMap() {
         let canvas = document.getElementById('map');
         let ctx = document.getElementById('map').getContext("2d");
-        canvas.width = 300;
-        canvas.height = 300;
+        canvas.width = 500;
+        canvas.height = 500;
 
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
