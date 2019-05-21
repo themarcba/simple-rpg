@@ -23,7 +23,7 @@ export default class Player {
 
 			if (this.currentField[direction] && this.currentField[direction].canMove) {
 				this.currentField = this.currentField[direction];
-				SystemLog.write(`moved ${direction}. now on field ${this.currentField.id} (${this.currentField.name})`);
+				SystemLog.write(`moved ${direction}. now on field (${this.currentField.constructor.name})`);
 				if (this.currentField.enterAction) {
 					this.currentField.enterAction(this);
 				}
@@ -37,9 +37,22 @@ export default class Player {
 
 		} else {
 			SystemLog.write(`${this.name} can't move. he passed out.`);
-		}
+        }
 
+        this.printPlayer();
 	}
+
+    printPlayer() {
+        let canvas = document.getElementById('player');
+        let ctx = document.getElementById('player').getContext("2d");
+        canvas.width = 300;
+        canvas.height = 300;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc((this.currentField.coordinates.x*100) + 50, (this.currentField.coordinates.y*100) + 50, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = 'tomato';
+        ctx.fill();
+    }
 
 	hurt(damage, reason){
 

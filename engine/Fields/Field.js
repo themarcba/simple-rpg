@@ -6,6 +6,6 @@ export default class Field {
             x: coordX,
             y: coordY
         };
-        SystemLog.write(`new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`);
+        SystemLog.write(`✨ new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`);
     }
 }

@@ -6,50 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>simple-rpg</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body style="background-color: #333; color: #fff;">
 
-<div class="game-controls">
+<div class="game-controls-explaination">
 
-    <table>
-
-        <tr>
-            <td></td>
-            <td>
-                <button class="movement-button" data-direction="north">move north</button>
-            </td>
-            <td></td>
-        </tr>
-
-        <tr>
-            <td>
-                <button class="movement-button" data-direction="west">move west</button>
-            </td>
-            <td></td>
-            <td>
-                <button class="movement-button" data-direction="east">move east</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td>
-                <button class="movement-button" data-direction="south">move south</button>
-            </td>
-            <td></td>
-        </tr>
-
-    </table>
+    Move with the arrow keys 😀
 
 </div>
 
 <div class="game-logs"></div>
 
-    <br>
+    <canvas id="map"></canvas>
+    <canvas id="player"></canvas>
 
     <script src="./bundle.js"></script>
     <script>
+        $(document).ready(function(){
 
+
+        });
         (function(){
             let game = new Game('marc');
         })();

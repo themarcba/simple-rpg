@@ -1,0 +1,18 @@
+div.game-logs {
+    display: none;
+}
+
+canvas {
+    position: absolute;
+}
+canvas#map {
+    border: solid tomato 2px;
+    width: 300px;
+    height: 300px;
+}
+
+canvas#player {
+    border: solid tomato 2px;
+    width: 300px;
+    height: 300px;
+}

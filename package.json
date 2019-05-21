@@ -12,8 +12,12 @@
     "babel-plugin-object-rest-spread": "0.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "css-loader": "^2.1.1",
     "webpack": "^3.6.0"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "style-loader": "^0.23.1"
+  }
 }

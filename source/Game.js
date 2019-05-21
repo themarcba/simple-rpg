@@ -1,4 +1,3 @@
-
 import Map from '../engine/Map';
 import SystemLog from '../engine/SystemLog';
 import Player from '../engine/Player';
@@ -9,22 +8,16 @@ import Wall from '../engine/Fields/Wall';
 
 class Game {
 
-    constructor(username){
-
-        this.username = username;
-
+    constructor(username) {
         this.configure();
-
-        this.start();
-
+        this.build(username);
         this.attachEvents();
-
     }
 
     /**
      * Change engine configuration
      */
-    configure(){
+    configure() {
 
         // change log container
         SystemLog.setSelector('.game-logs');
@@ -36,63 +29,48 @@ class Game {
      *
      * @param username
      */
-    start(username){
-
-        console.log('Starting game for:',this.username);
-
-        this.fields = [
-            new Road(),
-            new Grass(),
-            new Road(),
-            new Wall()
-        ];
-
+    build(username) {
         this.map = new Map(this.fields);
-        this.map.addField(0,0,Road);
-        this.map.addField(1,0,Road);
-        this.map.addField(2,0,Road);
-        this.map.addField(0,1,Grass);
-        this.map.addField(1,1,Wall);
-        this.map.addField(2,1,Wall);
-        this.map.addField(0,2,Road);
-        this.map.addField(1,2,Road);
-        this.map.addField(2,2,Road);
+        this.map.addField(0, 0, Road);
+        this.map.addField(1, 0, Road);
+        this.map.addField(2, 0, Road);
+        this.map.addField(0, 1, Grass);
+        this.map.addField(1, 1, Wall);
+        this.map.addField(2, 1, Wall);
+        this.map.addField(0, 2, Road);
+        this.map.addField(1, 2, Road);
+        this.map.addField(2, 2, Road);
         this.map.printFields();
         this.map.setSpawnPoint(this.map.fields[0][0]);
 
-        this.player = new Player(this.username, this.map);
+        this.player = new Player(username, this.map);
+        this.map.printMap();
+        this.player.printPlayer();
 
     }
 
     /**
      * Bind elements
      */
-    attachEvents(){
+    attachEvents() {
+        let _this = this;
+        document.onkeydown = function(event) {
 
-        let controls = $('.game-controls');
-
-        if(controls){
-
-            // movement in field
-            controls.find('.movement-button').each((index, element) => {
-
-                let button = $(element);
-                let direction = button.data('direction');
-
-                button.on('click',(event) => {
-
-                    this.player.move(direction);
-
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                });
-
-            });
-
-        }else{
-            console.log('Controls not found!');
-        }
+            switch (event.keyCode) {
+                case 38: // up arrow key pressed
+                    _this.player.move('north');
+                    break;
+                case 39: // right arrow key pressed
+                    _this.player.move('east');
+                    break;
+                case 40: // down arrow key pressed
+                    _this.player.move('south');
+                    break;
+                case 37: // left arrow key pressed
+                    _this.player.move('west');
+                    break;
+            }
+        };
 
     }
 

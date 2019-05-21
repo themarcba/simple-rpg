@@ -1,12 +1,13 @@
+import SystemLog from "./SystemLog";
+
 export default class Map {
 
     /**
      *
      * @param fields
      */
-    constructor(fields) {
-
-        this.fields = fields;
+    constructor() {
+        this.fields = [];
 
     }
 
@@ -19,30 +20,30 @@ export default class Map {
      */
     addField(coordX, coordY, FieldClass) {
         // create row if it doesn't exist
-        if(!this.fields[coordX]) {
+        if (!this.fields[coordX]) {
             this.fields[coordX] = [];
         }
         let newField = this.fields[coordY][coordX] = new FieldClass(coordX, coordY);
 
         // row above (Y-1), same X
-        if(this.fields[coordY-1] && this.fields[coordY-1][coordX]) {
-            console.log(`there is a field above the newly created one => ${this.fields[coordY-1][coordX].constructor.name}`);
-            this.connectFields(newField, this.fields[coordY-1][coordX], 'north');
+        if (this.fields[coordY - 1] && this.fields[coordY - 1][coordX]) {
+            // SystemLog.write(`🔗 there is a ${this.fields[coordY-1][coordX].constructor.name} above the newly created one. linking it.`);
+            this.connectFields(newField, this.fields[coordY - 1][coordX], 'north');
         }
         // row below (Y+1), same X
-        if(this.fields[coordY+1] && this.fields[coordY+1][coordX]) {
-            console.log(`there is a field above the newly created one => ${this.fields[coordY+1][coordX].constructor.name}`);
-            this.connectFields(newField, this.fields[coordY+1][coordX], 'south');
+        if (this.fields[coordY + 1] && this.fields[coordY + 1][coordX]) {
+            // SystemLog.write(`🔗 there is a ${this.fields[coordY+1][coordX].constructor.name} above the newly created one. linking it.`);
+            this.connectFields(newField, this.fields[coordY + 1][coordX], 'south');
         }
         // same row, box on the left (X-1)
-        if(this.fields[coordY][coordX-1]) {
-            console.log(`there is a field above the newly created one => ${this.fields[coordY][coordX-1].constructor.name}`);
-            this.connectFields(newField, this.fields[coordY][coordX-1], 'west');
+        if (this.fields[coordY][coordX - 1]) {
+            // SystemLog.write(`🔗 there is a ${this.fields[coordY][coordX-1].constructor.name} above the newly created one. linking it.`);
+            this.connectFields(newField, this.fields[coordY][coordX - 1], 'west');
         }
         // same row, box on the lefrightt (X+1)
-        if(this.fields[coordY][coordX+1]) {
-            console.log(`there is a field above the newly created one => ${this.fields[coordY][coordX+1].constructor.name}`);
-            this.connectFields(newField, this.fields[coordY][coordX-1], 'east');
+        if (this.fields[coordY][coordX + 1]) {
+            // SystemLog.write(`🔗 there is a ${this.fields[coordY][coordX+1].constructor.name} above the newly created one. linking it.`);
+            this.connectFields(newField, this.fields[coordY][coordX - 1], 'east');
         }
 
         return newField;
@@ -55,15 +56,48 @@ export default class Map {
         let body = document.querySelector('body');
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
-            //console.log(i, fieldI.length);
+            //SystemLog.write(i, fieldI.length);
 
             for (let j = 0; j < fieldI.length; j++) {
-                //console.log(j);
+                //SystemLog.write(j);
 
                 const fieldJ = this.fields[i][j];
                 body.innerHTML += this.fields[i][j].constructor.name.charAt(0);
             }
             body.innerHTML += '<br>';
+        }
+    }
+
+    printMap() {
+        let canvas = document.getElementById('map');
+        let ctx = document.getElementById('map').getContext("2d");
+        canvas.width = 300;
+        canvas.height = 300;
+
+        for (let i = 0; i < this.fields.length; i++) {
+            const fieldI = this.fields[i];
+
+            for (let j = 0; j < fieldI.length; j++) {
+
+                const fieldJ = this.fields[i][j];
+                switch (this.fields[i][j].constructor.name) {
+
+                    case 'Road':
+                        ctx.fillStyle = "grey";
+                        break;
+                    case 'Grass':
+                        ctx.fillStyle = "green";
+                        break;
+                    case 'Wall':
+                        ctx.fillStyle = "black";
+                        break;
+
+                    default:
+                        break;
+                }
+                ctx.fillRect(j * 100, i * 100, 100, 100);
+
+            }
         }
     }
 
@@ -81,7 +115,7 @@ export default class Map {
      * @param field2
      * @param side
      */
-    connectFields (field1, field2, side) {
+    connectFields(field1, field2, side) {
         switch (side) {
             case 'north':
                 field1.north = field2;

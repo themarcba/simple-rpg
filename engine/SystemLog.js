@@ -1,7 +1,7 @@
 class SystemLog {
 
     constructor() {
-        this.selector = 'body';
+        this.selector = '.game-logs';
     }
 
     setSelector(selector) {
@@ -13,16 +13,15 @@ class SystemLog {
      * @param message
      * @param messageType
      */
-    write(message, messageType = 'info') {
+    write(message, messageType = 'log') {
         var e = document.createElement('div');
         e.innerHTML = `<div> ${message}</div>`;
 
         while (e.firstChild) {
-            document.querySelector('body').appendChild(e.firstChild);
+            document.querySelector(this.selector).appendChild(e.firstChild);
         }
 
-        console[messageType](this.element);
-        console[messageType](message);
+        console.log(message);
     }
 
 }
