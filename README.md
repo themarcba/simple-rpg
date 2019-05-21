@@ -21,7 +21,9 @@ Using ES6 classes now. Will use them as modules, when I figure out how.
 
 Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
 
-Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup. ??
+Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
+
+I added now canvas graphics and arrow key control.
 
 # Install
 
