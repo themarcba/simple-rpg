@@ -5,6 +5,7 @@ import Player from '../engine/Player';
 import Grass from '../engine/Fields/Grass';
 import Road from '../engine/Fields/Road';
 import Wall from '../engine/Fields/Wall';
+import Water from '../engine/Fields/Water';
 
 class Game {
 
@@ -33,7 +34,7 @@ class Game {
         this.map = new Map(this.fields);
         this.map.addField(0, 0, Road);
         this.map.addField(1, 0, Road);
-        this.map.addField(2, 0, Road);
+        this.map.addField(2, 0, Water);
         this.map.addField(0, 1, Grass);
         this.map.addField(1, 1, Wall);
         this.map.addField(2, 1, Wall);

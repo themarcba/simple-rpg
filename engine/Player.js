@@ -14,7 +14,8 @@ export default class Player {
 		this.health = 100;
 		this.map = map;
 		this.currentField = map.spawnPoint;
-
+        this.canSwim = false;
+        
 	}
 
 	move (direction){

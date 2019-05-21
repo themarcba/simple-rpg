@@ -23,7 +23,9 @@ Made it easier to create maps, using a (X,Y) coordination system to create. This
 
 Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
 
-I added now canvas graphics and arrow key control.
+Added now canvas graphics and arrow key control.
+
+Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
 
 # Install
 

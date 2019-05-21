@@ -91,6 +91,9 @@ export default class Map {
                     case 'Wall':
                         ctx.fillStyle = "black";
                         break;
+                    case 'Water':
+                        ctx.fillStyle = "blue";
+                        break;
 
                     default:
                         break;
