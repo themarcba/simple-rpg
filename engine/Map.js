@@ -55,6 +55,7 @@ export default class Map {
         let canvas = document.getElementById('map');
         let ctx = document.getElementById('map').getContext("2d");
         let body = document.querySelector('body');
+        let imageFile = "";
 
         // TODO: Find the value of the largest row
         canvas.width = this.fields[0].length * 100;
@@ -72,22 +73,29 @@ export default class Map {
                 switch (this.fields[i][j].constructor.name) {
 
                     case 'Road':
-                        ctx.fillStyle = "grey";
+                        imageFile = 'road.png';
                         break;
                     case 'Grass':
-                        ctx.fillStyle = "green";
+                        imageFile = 'grass.png';
                         break;
                     case 'Wall':
-                        ctx.fillStyle = "black";
+                        imageFile = 'wall.png';
                         break;
                     case 'Water':
-                        ctx.fillStyle = "blue";
+                        imageFile = 'water.png';
                         break;
 
                     default:
                         break;
                 }
-                ctx.fillRect(j * 100, i * 100, 100, 100);
+
+                let img = new Image();
+                img.onload = function () {
+                    ctx.drawImage(img, j * 100, i * 100, 100, 100);
+                }
+                img.src = `images/${imageFile}`;
+                
+                // ctx.fillRect(j * 100, i * 100, 100, 100);
 
             }
         }
