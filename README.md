@@ -32,8 +32,11 @@ You can create a map with 4 different "field" types (road, grass, wall, water) a
 
 * **22/05/2019** Now the map moves around instead of the player (user can only see a portion of the map)
 
-* **22/05/2019** Added Pokemon Gamboy character which turns in the direction he walks to.
+* **22/05/2019** Added Pokemon Gamboy character (Ash) which turns in the direction he walks to.
 
+* **22/05/2019** Added textures of floor elements (road, grass, water)
+
+* **22/05/2019** Added game over screen
 
 # Install
 
