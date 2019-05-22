@@ -9,13 +9,12 @@ export default class Player {
 	 * @param {Map} map
 	 */
 	constructor(name, map){
-
 		this.name = name;
 		this.health = 100;
 		this.map = map;
 		this.currentField = map.spawnPoint;
         this.canSwim = false;
-        
+        this.map.moveMap(this.currentField.coordinates);
 	}
 
 	move (direction){
@@ -23,7 +22,8 @@ export default class Player {
 		if(this.health > 0) {
 
 			if (this.currentField[direction] && this.currentField[direction].canMove) {
-				this.currentField = this.currentField[direction];
+                this.currentField = this.currentField[direction];
+                this.stylePlayerOnMap(direction);
 				SystemLog.write(`🚶🏼‍moved ${direction}. now on field (${this.currentField.constructor.name})`);
 				if (this.currentField.enterAction) {
 					this.currentField.enterAction(this);
@@ -40,24 +40,17 @@ export default class Player {
 			SystemLog.write(`😵 ${this.name} can't move. he passed out.`);
         }
 
-        this.printPlayer();
+        this.map.moveMap(this.currentField.coordinates);
 	}
-
-    printPlayer() {
-        let canvas = document.getElementById('player');
-        let ctx = document.getElementById('player').getContext("2d");
-        canvas.width = 500;
-        canvas.height = 500;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-        ctx.arc((this.currentField.coordinates.x*100) + 50, (this.currentField.coordinates.y*100) + 50, 20, 0, 2 * Math.PI);
-        ctx.fillStyle = 'tomato';
-        ctx.fill();
-    }
 
 	hurt(damage, reason){
         this.health > damage ? this.health -= damage : this.health = 0;
 		SystemLog.write(`💥 ouch! ${this.name} got hurt (${reason}) - health :${this.health}%`);
-	}
+    }
+    
+    stylePlayerOnMap(direction) {
+        document.getElementById('player').className = "walk";
+        document.getElementById('player').classList.add(direction);
+    }
 
 }

@@ -66,23 +66,10 @@ class Game {
         this.map.addField(2, 4, Water);
         this.map.addField(3, 4, Water);
         this.map.addField(4, 4, Water);
+        this.map.setSpawnPoint(this.map.fields[2][2]);
 
-        // this.map.addField(0, 0, Road);
-        // this.map.addField(1, 0, Road);
-        // this.map.addField(2, 0, Water);
-        // this.map.addField(0, 1, Grass);
-        // this.map.addField(1, 1, Wall);
-        // this.map.addField(2, 1, Wall);
-        // this.map.addField(0, 2, Road);
-        // this.map.addField(1, 2, Road);
-        // this.map.addField(2, 2, Road);
-        this.map.printFields();
-        this.map.setSpawnPoint(this.map.fields[1][1]);
-
-        this.player = new Player(username, this.map);
         this.map.printMap();
-        this.player.printPlayer();
-
+        this.player = new Player(username, this.map);
     }
 
     /**

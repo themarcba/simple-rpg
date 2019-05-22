@@ -50,30 +50,18 @@ export default class Map {
         return newField;
     }
 
-    /**
-     *
-     */
-    printFields() {
-        let body = document.querySelector('body');
-        for (let i = 0; i < this.fields.length; i++) {
-            const fieldI = this.fields[i];
-            //SystemLog.write(i, fieldI.length);
-
-            for (let j = 0; j < fieldI.length; j++) {
-                //SystemLog.write(j);
-
-                const fieldJ = this.fields[i][j];
-                body.innerHTML += this.fields[i][j].constructor.name.charAt(0);
-            }
-            body.innerHTML += '<br>';
-        }
-    }
-
     printMap() {
+        let gameScreen = document.getElementById('screen');
         let canvas = document.getElementById('map');
         let ctx = document.getElementById('map').getContext("2d");
-        canvas.width = 500;
-        canvas.height = 500;
+        let body = document.querySelector('body');
+
+        // TODO: Find the value of the largest row
+        canvas.width = this.fields[0].length * 100;
+        canvas.height = this.fields.length * 100;
+
+        ctx.fillStyle = "#333";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
@@ -103,6 +91,12 @@ export default class Map {
 
             }
         }
+    }
+
+    moveMap(coordinates) {
+        let mapCanvas = document.getElementById('map');
+        mapCanvas.style.marginLeft = `-${(coordinates.x - 1) * 100}px`;
+        mapCanvas.style.marginTop = `-${(coordinates.y - 1) * 100}px`;
     }
 
     /**

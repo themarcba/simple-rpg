@@ -22,6 +22,7 @@ class SystemLog {
         }
 
         console.log(message);
+        document.getElementById('user-message').innerText = message;
     }
 
 }

@@ -19,16 +19,21 @@ You can create a map with 4 different "field" types (road, grass, wall, water) a
 * Water: Can technically walk on it, but will drown if the player can't swim
 
 # Changelog
-* **20/05.2019** Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
+* **20/05/2019** Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
 
 * **20/05.2019** Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
 
-* **21.05.2019** Added now canvas graphics and arrow key control.
+* **21/05/2019** Added now canvas graphics and arrow key control.
 
-* **21.05.2019** Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
+* **21/05/2019** Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
 
 
-* **21.05.2019** Created an abstraction *Hazard* which has properties such as *damage* and *probability*. Can be added more functionality later. Used as such: `bug.hurt(player);`
+* **21/05/2019** Created an abstraction *Hazard* which has properties such as *damage* and *probability*. Can be added more functionality later. Used as such: `bug.hurt(player);`
+
+* **22/05/2019** Now the map moves around instead of the player (user can only see a portion of the map)
+
+* **22/05/2019** Added Pokemon Gamboy character which turns in the direction he walks to.
+
 
 # Install
 

@@ -5,28 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>simple-rpg</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body style="background-color: #333; color: #fff;">
+<body>
 
-<div class="game-controls-explaination">
-
+<!-- <div class="game-controls-explaination">
     Move with the arrow keys 😀
-
+</div> -->
+<h1 class="center">Simple RPG</h1>
+<div id="user-message" class="center">
+        Move with the arrow keys 😀
 </div>
-
 <div class="game-logs"></div>
-
-    <canvas id="map"></canvas>
-    <canvas id="player"></canvas>
+    <div id="screen">
+        <canvas id="map"></canvas>
+        <div id="player" class="walk north"></div>
+    </div>
 
     <script src="./bundle.js"></script>
     <script>
-        $(document).ready(function(){
-
-
-        });
         (function(){
             let game = new Game('marc');
         })();
