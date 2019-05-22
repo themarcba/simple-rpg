@@ -29,7 +29,7 @@ export default class Player {
                 this.isControlActive = false;
                 setTimeout(() => {
                     this.isControlActive = true;
-                }, 500);
+                }, 1100);
 				SystemLog.write(`🚶🏼‍moved ${direction}. now on field (${this.currentField.constructor.name})`);
 				if (this.currentField.enterAction) {
 					this.currentField.enterAction(this);

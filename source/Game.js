@@ -33,6 +33,7 @@ class Game {
         this.map.addField(2, 0, Water);
         this.map.addField(3, 0, Water);
         this.map.addField(4, 0, Water);
+        this.map.addField(5, 0, Water);
 
         // Row 2
         this.map.addField(0, 1, Water);
@@ -40,13 +41,15 @@ class Game {
         this.map.addField(2, 1, Road);
         this.map.addField(3, 1, Grass);
         this.map.addField(4, 1, Water);
+        this.map.addField(5, 1, Water);
 
         // Row 3
         this.map.addField(0, 2, Water);
         this.map.addField(1, 2, Road);
         this.map.addField(2, 2, Road);
         this.map.addField(3, 2, Road);
-        this.map.addField(4, 2, Water);
+        this.map.addField(4, 2, Road);
+        this.map.addField(5, 2, Road);
 
         // Row 4
         this.map.addField(0, 3, Water);
@@ -54,6 +57,7 @@ class Game {
         this.map.addField(2, 3, Road);
         this.map.addField(3, 3, Grass);
         this.map.addField(4, 3, Water);
+        this.map.addField(5, 3, Water);
 
         // Row 5
         this.map.addField(0, 4, Water);
@@ -61,6 +65,7 @@ class Game {
         this.map.addField(2, 4, Water);
         this.map.addField(3, 4, Water);
         this.map.addField(4, 4, Water);
+        this.map.addField(5, 4, Water);
         this.map.setSpawnPoint(this.map.fields[2][2]);
 
         this.map.printMap();
