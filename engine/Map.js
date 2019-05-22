@@ -103,8 +103,8 @@ export default class Map {
 
     moveMap(coordinates) {
         let mapCanvas = document.getElementById('map');
-        mapCanvas.style.marginLeft = `-${(coordinates.x - 1) * 100}px`;
-        mapCanvas.style.marginTop = `-${(coordinates.y - 1) * 100}px`;
+        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `-${(coordinates.x - 1) * 100}px` : '100px';
+        mapCanvas.style.marginTop = (coordinates.y > 0) ? `-${(coordinates.y - 1) * 100}px` : '100px';
     }
 
     /**
