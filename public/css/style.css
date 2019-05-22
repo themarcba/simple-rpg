@@ -29,6 +29,26 @@ div#screen {
     box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
 }
 
+div#game-over {
+    opacity: 0;
+    font-size: 1.5em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 300px;
+    background: rgba(255,99,71, 0.7);
+    text-align: center;
+    transition-delay: 1s;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+div#game-over span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
 canvas#map {
     position: absolute;
     transition: margin 1s ease 0s;

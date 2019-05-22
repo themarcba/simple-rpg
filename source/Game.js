@@ -18,12 +18,7 @@ class Game {
     /**
      * Change engine configuration
      */
-    configure() {
-
-        // change log container
-        SystemLog.setSelector('.game-logs');
-
-    }
+    configure() {}
 
     /**
      * Start game
@@ -78,20 +73,21 @@ class Game {
     attachEvents() {
         let _this = this;
         document.onkeydown = function(event) {
-
-            switch (event.keyCode) {
-                case 38: // up arrow key pressed
-                    _this.player.move('north');
-                    break;
-                case 39: // right arrow key pressed
-                    _this.player.move('east');
-                    break;
-                case 40: // down arrow key pressed
-                    _this.player.move('south');
-                    break;
-                case 37: // left arrow key pressed
-                    _this.player.move('west');
-                    break;
+            if(_this.player.canMove()) {
+                switch (event.keyCode) {
+                    case 38: // up arrow key pressed
+                        _this.player.move('north');
+                        break;
+                    case 39: // right arrow key pressed
+                        _this.player.move('east');
+                        break;
+                    case 40: // down arrow key pressed
+                        _this.player.move('south');
+                        break;
+                    case 37: // left arrow key pressed
+                        _this.player.move('west');
+                        break;
+                }    
             }
         };
 

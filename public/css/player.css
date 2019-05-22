@@ -1,6 +1,6 @@
 #player {
     display: inline-block;
-    position: relative;
+    position: absolute;
     background: url("../images/player.png") no-repeat;
     width: 64px;
     height: 64px;
