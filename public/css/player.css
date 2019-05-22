@@ -1,0 +1,51 @@
+#player {
+    display: inline-block;
+    position: relative;
+    background: url("../images/player.png") no-repeat;
+    width: 64px;
+    height: 64px;
+    left: 116px;
+    top: 116px;
+}
+
+#player.walk.north {
+    background-position: 0 -192px;
+}
+#player.walking.north {
+    animation: walk-north .8s steps(4);
+}
+
+#player.walking.east {
+    animation: walk-east .8s steps(4);
+}
+#player.walk.east {
+    background-position: 0 -128px;
+}
+
+#player.walking.south {
+    animation: walk-south .8s steps(4);
+}
+#player.walk.south {
+    background-position: 0 0;
+}
+
+#player.walking.west {
+    animation: walk-west .8s steps(4);
+}
+#player.walk.west {
+    background-position: 0 -64px;
+}
+
+
+@keyframes walk-north {
+    100% { background-position: -256px -192px; }
+}
+@keyframes walk-east {
+    100% { background-position: -256px -128px; }
+}
+@keyframes walk-south {
+    100% { background-position: -256px 0; }
+}
+@keyframes walk-west {
+    100% { background-position: -256px -64px; }
+}

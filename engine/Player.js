@@ -1,5 +1,6 @@
 import SystemLog from './SystemLog';
 import Map from './Map';
+import { setTimeout } from 'timers';
 
 export default class Player {
 
@@ -49,8 +50,10 @@ export default class Player {
     }
     
     stylePlayerOnMap(direction) {
-        document.getElementById('player').className = "walk";
-        document.getElementById('player').classList.add(direction);
+        document.getElementById('player').className = `walk walking ${direction}`;
+        setTimeout(() => {
+            document.getElementById('player').classList.remove('walking');
+        }, 1000);
     }
 
 }

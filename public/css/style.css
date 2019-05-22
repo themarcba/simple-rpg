@@ -26,42 +26,13 @@ div#screen {
     box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
 }
 
-#player {
-    display: inline-block;
-    position: relative;
-    background: url("../images/player.png") no-repeat;
-    width: 64px;
-    height: 64px;
-    left: 116px;
-    top: 116px;
-}
-
-
-#player.walk.north {
-    background-position: 0 -196px;
-}
-
-#player.walk.east {
-    background-position: 0 -128px;
-}
-
-#player.walk.south {
-    background-position: 0 0;
-}
-
-#player.walk.west {
-    background-position: 0 -64px;
-}
-
-
-
 canvas#map {
     position: absolute;
     transition: margin 1s ease 0s;
 }
 
 h1 {
-    font-size: 50pt;
+    font-size: 3em;
     font-family: 'Luckiest Guy';
     color: #fff;
     -webkit-font-smoothing: antialiased;
