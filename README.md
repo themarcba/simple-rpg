@@ -11,12 +11,15 @@ A friend of mine who is studying CS told me about a project he's working on in s
 In the spirit of working more with OOP in JavaScript, I started this little project. I don't know yet where it is going, just playing around here.
 
 # Status
-You can create a map with 4 different "field" types (road, grass, wall, water) and walk around in it.
+* You can create a map with 4 different "field" types (road, grass, wall, water) and walk around in it.
+  * Road: Normal walk
+  * Grass: Walk, but 50% risk of getting stung by a bug
+  * Wall: Can't walk. Is seen as obstacle
+  * Water: Can technically walk on it, but will drown if the player can't swim
+* Animated character
+* Textured map
+* Game over display
 
-* Road: Normal walk
-* Grass: Walk, but 50% risk of getting stung by a bug
-* Wall: Can't walk. Is seen as obstacle
-* Water: Can technically walk on it, but will drown if the player can't swim
 
 # Changelog
 * **20/05/2019** Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
