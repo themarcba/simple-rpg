@@ -6,6 +6,25 @@ class UIController {
         document.getElementById('user-message').innerText = message;
     }
 
+    static updateHealth(health) {
+        document.getElementById('health').innerText = health;
+        if(health >= 50) { // health good
+            document.querySelector('.health-display').classList.remove('bad');
+            document.querySelector('.health-display').classList.remove('critical');
+            document.querySelector('.health-display').classList.add('good');   
+        }
+        else if(health >= 20) { // health bad
+            document.querySelector('.health-display').classList.remove('good');
+            document.querySelector('.health-display').classList.remove('critical');
+            document.querySelector('.health-display').classList.add('bad');   
+        }
+        else { // health critical
+            document.querySelector('.health-display').classList.remove('bad');
+            document.querySelector('.health-display').classList.remove('good');
+            document.querySelector('.health-display').classList.add('critical');   
+        }
+    }
+
     static addMessageToHistory(message) {
         var e = document.createElement('div');
         e.innerHTML = `<div>${message}</div>`;
@@ -16,7 +35,10 @@ class UIController {
     }
 
     static showGameOver() {
-        document.getElementById('game-over').style.opacity = 1;
+        document.getElementById('game-over').style.display = 'block';
+        setTimeout(() => {
+            document.getElementById('game-over').style.opacity = 1;    
+        }, 100);
     }
 
     static showWalkingAnimation(player, direction) {
@@ -53,11 +75,11 @@ class UIController {
 
         let img = new Image();
         img.onload = function() {
-            ctx.drawImage(img, coordX * 100, coordY * 100, 100, 100);
+            ctx.drawImage(img, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
         }
         img.src = `images/${textureFile}`;
 
-        ctx.fillRect(coordX * 100, coordY * 100, 100, 100);
+        ctx.fillRect((coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
     }
 
     static moveMap(coordinates) {

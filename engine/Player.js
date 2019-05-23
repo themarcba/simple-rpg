@@ -27,7 +27,7 @@ export default class Player {
 			if (this.currentField[direction] && this.currentField[direction].canMove) {
                 UIController.showWalkingAnimation(this, direction);
                 this.currentField = this.currentField[direction];
-				SystemLog.write(`🚶🏼‍moved ${direction}. now on field (${this.currentField.constructor.name})`);
+				SystemLog.write(`🚶🏼‍moved ${direction}. now on ${this.currentField.constructor.name.toLowerCase()}.`);
 				if (this.currentField.enterAction) {
 					this.currentField.enterAction(this);
 				}
@@ -48,10 +48,13 @@ export default class Player {
 
 	hurt(damage, reason){
         this.health > damage ? this.health -= damage : this.health = 0;
+
+        UIController.updateHealth(this.health);
+
         if(this.health == 0) {
             UIController.showGameOver();
         }
-		SystemLog.write(`💥 ouch! ${this.name} got hurt (${reason}) - health :${this.health}%`);
+		SystemLog.write(`💥 ouch! ${this.name} got hurt (${reason})`);
     }
     
     canMove() {

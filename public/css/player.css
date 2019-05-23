@@ -4,8 +4,8 @@
     background: url("../images/player.png") no-repeat;
     width: 64px;
     height: 64px;
-    left: 116px;
-    top: 116px;
+    left: 216px;
+    top: 216px;
 }
 
 #player.walk.north {

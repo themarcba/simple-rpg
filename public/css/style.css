@@ -62,3 +62,20 @@ h1 {
 .center {
     text-align: center;
 }
+
+.health-display {
+    font-size: 1.5em;
+    margin-top: 25px;
+}
+
+.health-display.good {
+    color: #2ecc71;
+}
+
+.health-display.bad {
+    color: #f39c12;
+}
+
+.health-display.critical {
+    color: #e74c3c;
+}

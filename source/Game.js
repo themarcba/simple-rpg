@@ -73,6 +73,8 @@ class Game {
         this.map.draw();
 
         this.player = new Player(username, this.map);
+
+        UIController.updateHealth(this.player.health);
     }
 
     /**
