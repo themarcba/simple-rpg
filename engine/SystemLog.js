@@ -1,3 +1,5 @@
+import UIController from "./UIController";
+
 class SystemLog {
 
     constructor() {
@@ -22,7 +24,7 @@ class SystemLog {
         }
 
         console.log(message);
-        document.getElementById('user-message').innerText = message;
+        UIController.displayMessage(message);
     }
 
 }

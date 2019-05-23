@@ -7,6 +7,8 @@ import Road from '../engine/Fields/Road';
 import Wall from '../engine/Fields/Wall';
 import Water from '../engine/Fields/Water';
 
+import UIController from '../engine/UIController';
+
 class Game {
 
     constructor(username) {
