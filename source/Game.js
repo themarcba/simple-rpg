@@ -82,8 +82,10 @@ class Game {
      */
     attachEvents() {
         let _this = this;
+
+        // Key stroke
         document.onkeydown = function(event) {
-            if(_this.player.canMove()) {
+            if (_this.player.canMove()) {
                 switch (event.keyCode) {
                     case 38: // up arrow key pressed
                         _this.player.move('north');
@@ -97,9 +99,24 @@ class Game {
                     case 37: // left arrow key pressed
                         _this.player.move('west');
                         break;
-                }    
+                    case 32: // space
+                        UIController.showBackpack();
+                        break;
+
+                }
             }
         };
+
+        document.addEventListener('click', function(e) {
+            if (e.target && e.target.classList.contains('action')) {
+                let itemId = e.target.getAttribute('data-item-id');
+                if (e.target.classList.contains('drink')) {
+                    _this.player.drink(_this.player.backpack.liquids[itemId]);
+                }
+            }
+            UIController.buildBackpackView(_this.player);
+        });
+
 
     }
 

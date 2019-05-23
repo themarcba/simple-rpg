@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,33 +9,42 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/player.css">
+    <link rel="stylesheet" href="css/backpack.css">
 </head>
+
 <body>
 
-<!-- <div class="game-controls-explaination">
+    <!-- <div class="game-controls-explaination">
     Move with the arrow keys 😀
 </div> -->
-<h1 class="center">Simple RPG</h1>
-<div id="user-message" class="center">
+    <h1 class="center">Simple RPG</h1>
+    <div id="user-message" class="center">
         Move with the arrow keys 😀
-</div>
-<div class="health-display center">❤ health <span id="health">??</span>%</div>
-<div class="game-logs"></div>
+    </div>
+    <div class="health-display center">❤ health <span id="health">??</span>%</div>
+    <div class="game-logs"></div>
     <div id="screen">
         <canvas id="map"></canvas>
         <div id="player" class="walk north"></div>
         <div id="game-over"><span>GAME OVER</span></div>
+        <div id="backpack">
+            <div class="container">
+                <h2 class="center">Backpack</h2>
+                <h3>Liquids</h3>
+                <div id="liquids"></div>
+            </div>
+        </div>
     </div>
 
     <script src="./bundle.js"></script>
     <script>
-        (function(){
+        (function() {
             let game = new Game('marc');
         })();
-
     </script>
 
 
     <div class="monster"></div>
-    </body>
+</body>
+
 </html>

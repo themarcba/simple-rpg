@@ -42,8 +42,6 @@ class UIController {
     }
 
     static showWalkingAnimation(player, direction) {
-        console.log('walk');
-
         document.getElementById('player').className = `walk walking ${direction}`;
 
         UIController.disableControlsForMilliseconds(player, 1100);
@@ -68,7 +66,7 @@ class UIController {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    static drawFieldToMap(coordX, coordY, textureFile) {
+    static drawFieldToMap(coordX, coordY, FieldClass) {
         let ctx = document.getElementById('map').getContext("2d");
         let imageFile = "";
 
@@ -77,7 +75,8 @@ class UIController {
         img.onload = function() {
             ctx.drawImage(img, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
         }
-        img.src = `images/${textureFile}`;
+        
+        img.src = `images/${FieldClass.textureFile()}`;
 
         ctx.fillRect((coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
     }
@@ -93,6 +92,38 @@ class UIController {
         setTimeout(() => {
             player.isControlDisabled = false;
         }, milliseconds);
+    }
+
+    static buildBackpackView(player) {
+        document.querySelector('#liquids').innerHTML = '';
+        player.backpack.liquids.forEach((liquid, index) => {
+            let html = `
+            <div class="item">
+                <div class="title">
+                    <span class="icon">🧪</span>
+                    <span class="name">${liquid.name}</span>
+                </div>
+                <div class="description">${liquid.description}</div>
+                <div class="actions">
+                    <div class="drink action" data-item-id="${index}">drink</div>
+                </div>
+            </div>
+            `;
+            document.querySelector('#liquids').innerHTML += html;
+        });
+        UIController.showBackpack(false);
+    }
+
+    static showBackpack(show = true) {
+        if(show) {
+            if(document.getElementById('backpack').style.opacity == 0){
+                document.getElementById('backpack').style.opacity = 1;
+            } else {
+                document.getElementById('backpack').style.opacity = 0;
+            }    
+        } else {
+            document.getElementById('backpack').style.opacity = 0;
+        }
     }
 }
 

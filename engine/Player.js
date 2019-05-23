@@ -2,6 +2,8 @@ import SystemLog from './SystemLog';
 import Map from './Map';
 import UIController from './UIController';
 import { setTimeout } from 'timers';
+import HealthPotion from './Items/Liquids/HealthPotion';
+import DeathPotion from './Items/Liquids/DeathPotion';
 
 export default class Player {
 
@@ -11,13 +13,21 @@ export default class Player {
 	 * @param {Map} map
 	 */
 	constructor(name, map){
+        window._player = this;
 		this.name = name;
 		this.health = 100;
 		this.map = map;
 		this.currentField = map.spawnPoint;
         this.canSwim = false;
         this.isControlDisabled = false;
+        this.backpack = {
+            liquids: [new HealthPotion(), new DeathPotion(), new HealthPotion()],
+            weapons: [],
+            miscellaneous: []
+        };
         this.map.moveMap(this.currentField.coordinates);
+
+        UIController.buildBackpackView(this);
 	}
 
 	move (direction){
@@ -54,11 +64,27 @@ export default class Player {
         if(this.health == 0) {
             UIController.showGameOver();
         }
-		SystemLog.write(`💥 ouch! ${this.name} got hurt (${reason})`);
+		SystemLog.write(`💥 ${this.name} got hurt (${reason})`);
+    }
+
+    heal(health) {
+        (this.health + health) > 100 ? this.health = 100 : this.health += health;
+        SystemLog.write(`❤️ ${this.name}'s health rose to ${this.health}`);
+        UIController.updateHealth(this.health);
+    }
+
+    drink(liquid) {
+        liquid.applyDrink(this);
+
+        // removes liquid after player drank it
+        this.backpack.liquids = this.backpack.liquids.filter(item => item !== liquid);
+    }
+
+    addToBackpack(item) {
+
     }
     
     canMove() {
         return (this.health > 0) && !this.isControlDisabled;
     }
-
 }

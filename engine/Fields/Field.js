@@ -17,6 +17,6 @@ export default class Field {
     }
 
     draw() {
-        UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this.textureFile);
+        UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this.constructor);
     }
 }

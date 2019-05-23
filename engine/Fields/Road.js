@@ -5,7 +5,10 @@ export default class Road extends Field {
     constructor(coordX, coordY) {
         super(coordX, coordY);
         this.canMove = true;
-        this.textureFile = 'road.png';
+    }
+
+    static textureFile() {
+        return 'road.png';
     }
 
 }

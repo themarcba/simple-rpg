@@ -1,4 +1,3 @@
-
 import Field from './Field';
 import Hazard from '../Hazard';
 
@@ -6,7 +5,10 @@ export default class Grass extends Field {
     constructor(coordX, coordY) {
         super(coordX, coordY);
         this.canMove = true;
-        this.textureFile = 'grass.png';
+    }
+
+    static textureFile() {
+        return 'grass.png';
     }
 
     enterAction(player) {

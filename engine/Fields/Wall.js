@@ -6,4 +6,9 @@ export default class Wall extends Field {
         this.canMove = false;
         this.cantMoveReason = `this is a wall.`;
     }
+
+    static textureFile() {
+        return 'wall.png';
+    }
+
 }

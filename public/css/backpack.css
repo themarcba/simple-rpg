@@ -1,0 +1,47 @@
+#backpack {
+    /* display: none; */
+    font-size: 1.5em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    color: #000;
+    overflow: scroll;
+    transition: opacity .5s;
+    opacity: 0;
+}
+
+#backpack .container {
+    margin: 15px;
+}
+
+#backpack .item {
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+    margin: 10px auto;
+}
+
+#backpack .item .title {
+    font-size: .8em;
+    margin-bottom: 5px;
+}
+
+#backpack .item .description {
+    font-size: .7em;
+    color: #666;
+}
+
+#backpack .item .actions {
+    font-size: .7em;
+}
+
+#backpack .item .action {
+    background: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 8px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
