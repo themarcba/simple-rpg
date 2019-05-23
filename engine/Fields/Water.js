@@ -1,5 +1,5 @@
 import Field from './Field';
-import Drowning from '../Hazards/Drowning.js';
+import Hazard from '../Hazard';
 
 export default class Water extends Field {
     constructor(coordX, coordY) {
@@ -10,7 +10,7 @@ export default class Water extends Field {
 
     enterAction(player) {        
         if(!player.canSwim) {            
-            let drowning = new Drowning();            
+            let drowning = new Hazard('drowning', 100, 'drowned in water', 1);
             drowning.hurt(player);            
         }
     }

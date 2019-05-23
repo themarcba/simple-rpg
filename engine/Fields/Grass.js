@@ -1,6 +1,6 @@
 
 import Field from './Field';
-import Bug from '../Hazards/Bug.js';
+import Hazard from '../Hazard';
 
 export default class Grass extends Field {
     constructor(coordX, coordY) {
@@ -10,7 +10,7 @@ export default class Grass extends Field {
     }
 
     enterAction(player) {
-        let bug = new Bug();
+        let bug = new Hazard('bug', 15, 'stung by bug', 0.5);
         bug.hurt(player);
     }
 }
