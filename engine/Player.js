@@ -1,5 +1,6 @@
 import SystemLog from './SystemLog';
 import Map from './Map';
+import UIController from './UIController';
 import { setTimeout } from 'timers';
 
 export default class Player {
@@ -15,7 +16,7 @@ export default class Player {
 		this.map = map;
 		this.currentField = map.spawnPoint;
         this.canSwim = false;
-        this.isControlActive = true;
+        this.isControlDisabled = false;
         this.map.moveMap(this.currentField.coordinates);
 	}
 
@@ -24,12 +25,8 @@ export default class Player {
 		if(this.health > 0) {
 
 			if (this.currentField[direction] && this.currentField[direction].canMove) {
+                UIController.showWalkingAnimation(this, direction);
                 this.currentField = this.currentField[direction];
-                this.stylePlayerOnMap(direction);
-                this.isControlActive = false;
-                setTimeout(() => {
-                    this.isControlActive = true;
-                }, 1100);
 				SystemLog.write(`🚶🏼‍moved ${direction}. now on field (${this.currentField.constructor.name})`);
 				if (this.currentField.enterAction) {
 					this.currentField.enterAction(this);
@@ -52,20 +49,13 @@ export default class Player {
 	hurt(damage, reason){
         this.health > damage ? this.health -= damage : this.health = 0;
         if(this.health == 0) {
-            document.getElementById('game-over').style.opacity = 1;
+            UIController.showGameOver();
         }
 		SystemLog.write(`💥 ouch! ${this.name} got hurt (${reason}) - health :${this.health}%`);
     }
     
-    stylePlayerOnMap(direction) {
-        document.getElementById('player').className = `walk walking ${direction}`;
-        setTimeout(() => {
-            document.getElementById('player').classList.remove('walking');
-        }, 1000);
-    }
-
     canMove() {
-        return (this.health > 0) && this.isControlActive;
+        return (this.health > 0) && !this.isControlDisabled;
     }
 
 }

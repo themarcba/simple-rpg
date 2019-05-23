@@ -1,4 +1,5 @@
 import SystemLog from "./SystemLog";
+import UIController from "./UIController";
 
 export default class Map {
 
@@ -43,68 +44,30 @@ export default class Map {
         }
         // same row, box on the lefrightt (X+1)
         if (this.fields[coordY][coordX + 1]) {
-            // SystemLog.write(`🔗 there is a ${this.fields[coordY][coordX+1].constructor.name} above the newly created one. linking it.`);
             this.connectFields(newField, this.fields[coordY][coordX - 1], 'east');
         }
 
         return newField;
     }
 
-    printMap() {
-        let gameScreen = document.getElementById('screen');
-        let canvas = document.getElementById('map');
-        let ctx = document.getElementById('map').getContext("2d");
-        let body = document.querySelector('body');
-        let imageFile = "";
+    draw() {
 
-        // TODO: Find the value of the largest row
-        canvas.width = this.fields[0].length * 100;
-        canvas.height = this.fields.length * 100;
-
-        ctx.fillStyle = "#333";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Prepare canvas (draw full width and height with standard color)
+        let canvasWidth = this.fields[0].length * 100;
+        let canvasHeight = this.fields.length * 100;
+        UIController.prepareMapCanvas(canvasWidth, canvasHeight);
 
         for (let i = 0; i < this.fields.length; i++) {
             const fieldI = this.fields[i];
 
             for (let j = 0; j < fieldI.length; j++) {
-
-                const fieldJ = this.fields[i][j];
-                switch (this.fields[i][j].constructor.name) {
-
-                    case 'Road':
-                        imageFile = 'road.png';
-                        break;
-                    case 'Grass':
-                        imageFile = 'grass.png';
-                        break;
-                    case 'Wall':
-                        imageFile = 'wall.png';
-                        break;
-                    case 'Water':
-                        imageFile = 'water.png';
-                        break;
-
-                    default:
-                        break;
-                }
-
-                let img = new Image();
-                img.onload = function () {
-                    ctx.drawImage(img, j * 100, i * 100, 100, 100);
-                }
-                img.src = `images/${imageFile}`;
-                
-                // ctx.fillRect(j * 100, i * 100, 100, 100);
-
+                this.fields[i][j].draw();
             }
         }
     }
 
     moveMap(coordinates) {
-        let mapCanvas = document.getElementById('map');
-        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `-${(coordinates.x - 1) * 100}px` : '100px';
-        mapCanvas.style.marginTop = (coordinates.y > 0) ? `-${(coordinates.y - 1) * 100}px` : '100px';
+        UIController.moveMap(coordinates);
     }
 
     /**

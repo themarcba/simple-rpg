@@ -6,6 +6,7 @@ export default class Grass extends Field {
     constructor(coordX, coordY) {
         super(coordX, coordY);
         this.canMove = true;
+        this.textureFile = 'grass.png';
     }
 
     enterAction(player) {

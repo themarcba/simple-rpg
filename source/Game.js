@@ -70,7 +70,8 @@ class Game {
         this.map.addField(5, 4, Water);
         this.map.setSpawnPoint(this.map.fields[2][2]);
 
-        this.map.printMap();
+        this.map.draw();
+
         this.player = new Player(username, this.map);
     }
 

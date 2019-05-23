@@ -13,18 +13,18 @@ class SystemLog {
     /**
      *
      * @param message
-     * @param messageType
+     * @param options
      */
-    write(message, messageType = 'log') {
-        var e = document.createElement('div');
-        e.innerHTML = `<div> ${message}</div>`;
+    write(message, options = {}) {
+        // defaults
+        if(options.displayToUser === void 0) options.displayToUser = true;
+        if(options.addToHistory === void 0) options.addToHistory = true;
+        if(options.logToConsole === void 0) options.logToConsole = true;
 
-        while (e.firstChild) {
-            document.querySelector(this.selector).appendChild(e.firstChild);
-        }
-
-        console.log(message);
-        UIController.displayMessage(message);
+        // executing
+        if(options.displayToUser) UIController.displayMessage(message);
+        if(options.addToHistory) UIController.addMessageToHistory(message);
+        if(options.logToConsole) console.log(message);
     }
 
 }

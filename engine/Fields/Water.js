@@ -5,6 +5,7 @@ export default class Water extends Field {
     constructor(coordX, coordY) {
         super(coordX, coordY);
         this.canMove = true;
+        this.textureFile = 'water.png';
     }
 
     enterAction(player) {        
