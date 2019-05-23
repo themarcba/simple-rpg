@@ -53,8 +53,8 @@ export default class Map {
     draw() {
 
         // Prepare canvas (draw full width and height with standard color)
-        let canvasWidth = this.fields[0].length * 100;
-        let canvasHeight = this.fields.length * 100;
+        let canvasWidth = (this.fields[0].length + 1) * 100;
+        let canvasHeight = (this.fields.length + 1) * 100;
         UIController.prepareMapCanvas(canvasWidth, canvasHeight);
 
         for (let i = 0; i < this.fields.length; i++) {
