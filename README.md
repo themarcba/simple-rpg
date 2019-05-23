@@ -22,24 +22,26 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 
 
 # Changelog
-* **20/05/2019** Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
+## 20/05/2019
+* Made it easier to create maps, using a (X,Y) coordination system to create. This is just to create the map. Inside, it still works the same with north, east, south, west properties, pointing to the next field.
+* Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
 
-* **20/05.2019** Huge thanks to [@dacostafilipe](https://twitter.com/dacostafilipe) for helping my out with the ES6 rewrite and Webpack setup.
+## 21/05/2019
+* Added now canvas graphics and arrow key control.
+* Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
+* Created an abstraction *Hazard* which has properties such as *damage* and *probability*. Can be added more functionality later. Used as such: `bug.hurt(player);`
 
-* **21/05/2019** Added now canvas graphics and arrow key control.
+## 22/05/2019
+* Now the map moves around instead of the player (user can only see a portion of the map)
+* Added Pokemon Gamboy character (Ash) which turns in the direction he walks to.
+* Added textures of floor elements (road, grass, water)
+* Added game over screen
 
-* **21/05/2019** Added water class. If the player can't swim (default), he'll drown. Later on, I will add that he can learn how to swim.
-
-
-* **21/05/2019** Created an abstraction *Hazard* which has properties such as *damage* and *probability*. Can be added more functionality later. Used as such: `bug.hurt(player);`
-
-* **22/05/2019** Now the map moves around instead of the player (user can only see a portion of the map)
-
-* **22/05/2019** Added Pokemon Gamboy character (Ash) which turns in the direction he walks to.
-
-* **22/05/2019** Added textures of floor elements (road, grass, water)
-
-* **22/05/2019** Added game over screen
+## 23/05/2019
+* Extended map to 5x5
+* Made a centralized place where all UI controlling takes place (UIController, duh)
+* Simplified hazards (no sub-classes anymore)
+* Added health display
 
 # Install
 
