@@ -42,6 +42,7 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Made a centralized place where all UI controlling takes place (UIController, duh)
 * Simplified hazards (no sub-classes anymore)
 * Added health display
+* Added backpack functionality (only liquids for now). Can be invoked with the space key.
 
 # Install
 
