@@ -48,6 +48,7 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Fixed a display error in Safari
 * Introducing actions (drink, smell, etc.) that can have effects (change of property). This is kept very abstract. Every object that inherits Affectable can be affected by an action.
 * Making it easier to create objects that can have an effect on other objects
+* Extended map to 10x10 so I can lay out a story
 
 # Install
 
