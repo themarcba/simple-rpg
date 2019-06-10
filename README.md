@@ -49,6 +49,7 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Introducing actions (drink, smell, etc.) that can have effects (change of property). This is kept very abstract. Every object that inherits Affectable can be affected by an action.
 * Making it easier to create objects that can have an effect on other objects
 * Extended map to 10x10 so I can lay out a story
+* Added a tree class (which will be able to cut down with a tool)
 
 # Install
 
