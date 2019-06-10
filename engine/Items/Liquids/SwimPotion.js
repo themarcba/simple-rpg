@@ -2,24 +2,21 @@ import Liquid from './Liquid';
 import SystemLog from '../../SystemLog';
 import Effect from '../../Effects/Effect';
 import Action from '../../Effects/Action';
-
-export default class HealthPotion extends Liquid {
+export default class SwimPotion extends Liquid {
 
     constructor() {
         super();
-        this.name = 'death potion';
-        this.description = `kills user immediately.`;
+        this.name = 'swim potion';
+        this.description = `gives user the ability to swim`;
         this.actions = [
             new Action('drink',
                 [
-                    new Effect('health', -100)
+                    new Effect('canSwim', true)
                 ],
                 () => {
-                    SystemLog.write('ugh. something\'s wrong with this drink...');
+                    SystemLog.write('i feel like taking a swim 🏊‍');
                 }
-            )
+            ),
         ];
-
     }
-
 }

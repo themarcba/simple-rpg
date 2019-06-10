@@ -4,6 +4,11 @@
 * {
     font-family: 'Press Start 2P', 'Helvetica', 'Arial', sans-serif;
 }
+
+a {
+    color: #2ecc71;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -17,13 +22,15 @@ div.game-logs {
 }
 
 div#screen {
-    position: sticky;
+    position: absolute;
+    left: 50%;
     width: 500px;
     height: 500px;
     overflow: hidden;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 40px;
     margin-bottom: 20px;
+    margin-left: -250px;
     border-radius: 8px;
     -webkit-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 24px 0px rgba(0,0,0,0.75);
@@ -79,4 +86,19 @@ h1 {
 
 .health-display.critical {
     color: #e74c3c;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#github-banner {
+    position: absolute;
+    right: 0;
+    top: 0;
 }

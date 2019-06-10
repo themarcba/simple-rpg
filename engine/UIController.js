@@ -8,20 +8,18 @@ class UIController {
 
     static updateHealth(health) {
         document.getElementById('health').innerText = health;
-        if(health >= 50) { // health good
+        if (health >= 50) { // health good
             document.querySelector('.health-display').classList.remove('bad');
             document.querySelector('.health-display').classList.remove('critical');
-            document.querySelector('.health-display').classList.add('good');   
-        }
-        else if(health >= 20) { // health bad
+            document.querySelector('.health-display').classList.add('good');
+        } else if (health >= 20) { // health bad
             document.querySelector('.health-display').classList.remove('good');
             document.querySelector('.health-display').classList.remove('critical');
-            document.querySelector('.health-display').classList.add('bad');   
-        }
-        else { // health critical
+            document.querySelector('.health-display').classList.add('bad');
+        } else { // health critical
             document.querySelector('.health-display').classList.remove('bad');
             document.querySelector('.health-display').classList.remove('good');
-            document.querySelector('.health-display').classList.add('critical');   
+            document.querySelector('.health-display').classList.add('critical');
         }
     }
 
@@ -37,7 +35,7 @@ class UIController {
     static showGameOver() {
         document.getElementById('game-over').style.display = 'block';
         setTimeout(() => {
-            document.getElementById('game-over').style.opacity = 1;    
+            document.getElementById('game-over').style.opacity = 1;
         }, 100);
     }
 
@@ -75,7 +73,7 @@ class UIController {
         img.onload = function() {
             ctx.drawImage(img, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
         }
-        
+
         img.src = `images/${FieldClass.textureFile()}`;
 
         ctx.fillRect((coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
@@ -94,9 +92,16 @@ class UIController {
         }, milliseconds);
     }
 
-    static buildBackpackView(player) {
-        document.querySelector('#liquids').innerHTML = '';
-        player.backpack.liquids.forEach((liquid, index) => {
+    static buildBackpackView(player, itemType) {
+        let el = document.getElementById(itemType);
+        let backpackCompartment = player.backpack[itemType];
+        el.innerHTML = `<h2>${itemType}</h2>`;
+        backpackCompartment.forEach((liquid, itemIndex) => {
+            let actionsHTML = ``;
+
+            liquid.actions.map(action => action.name).forEach((actionName) => {
+                actionsHTML += `<div class="${actionName} action" data-action="${actionName}" data-item-id="${itemIndex}" data-item-type="${itemType}">${actionName}</div>`;
+            });
             let html = `
             <div class="item">
                 <div class="title">
@@ -105,7 +110,7 @@ class UIController {
                 </div>
                 <div class="description">${liquid.description}</div>
                 <div class="actions">
-                    <div class="drink action" data-item-id="${index}">drink</div>
+                    ${actionsHTML}
                 </div>
             </div>
             `;
@@ -115,12 +120,12 @@ class UIController {
     }
 
     static showBackpack(show = true) {
-        if(show) {
-            if(document.getElementById('backpack').style.opacity == 0){
+        if (show) {
+            if (document.getElementById('backpack').style.opacity == 0) {
                 document.getElementById('backpack').style.opacity = 1;
             } else {
                 document.getElementById('backpack').style.opacity = 0;
-            }    
+            }
         } else {
             document.getElementById('backpack').style.opacity = 0;
         }

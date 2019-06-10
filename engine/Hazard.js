@@ -9,7 +9,7 @@ export default class Hazard {
     }
 
     hurt(player) {
-        if (Math.random() < this.probability) { // probability to get stung by bug ~50%
+        if (Math.random() < this.probability) {
             player.hurt(this.damage, this.damageReason);
         }
     }

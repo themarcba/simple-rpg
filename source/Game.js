@@ -109,12 +109,19 @@ class Game {
 
         document.addEventListener('click', function(e) {
             if (e.target && e.target.classList.contains('action')) {
+                let actionName = e.target.getAttribute('data-action');
                 let itemId = e.target.getAttribute('data-item-id');
-                if (e.target.classList.contains('drink')) {
-                    _this.player.drink(_this.player.backpack.liquids[itemId]);
+                let itemType = e.target.getAttribute('data-item-type');
+                let item = _this.player.backpack.liquids[itemId];
+
+                if (_this.player.process(item, actionName)) {
+                    _this.player.removeFromBackpack(item, itemType);
+                    UIController.updateHealth(_this.player.health);
+                } else {
+                    SystemLog.write(`${_this.player.name} is not affectable by ${actionName}`);
                 }
             }
-            UIController.buildBackpackView(_this.player);
+            UIController.buildBackpackView(_this.player, 'liquids');
         });
 
 
