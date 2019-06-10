@@ -44,6 +44,10 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Added health display
 * Added backpack functionality (only liquids for now). Can be invoked with the space key.
 
+## 10/06/2019
+* Fixed a display error in Safari
+* Introducing actions (drink, smell, etc.) that can have effects (change of property). This is kept very abstract. Every object that inherits Affectable can be affected by an action.
+
 # Install
 
 Install needed packages:
