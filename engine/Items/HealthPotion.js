@@ -1,8 +1,9 @@
-import Liquid from './Liquid';
-import SystemLog from '../../SystemLog';
-import Effect from '../../Effects/Effect';
-import Action from '../../Effects/Action';
-export default class HealthPotion extends Liquid {
+import SystemLog from '../SystemLog';
+import Effect from '../Effects/Effect';
+import Action from '../Effects/Action';
+import Item from './Item';
+
+export default class HealthPotion extends Item {
 
     constructor() {
         super();

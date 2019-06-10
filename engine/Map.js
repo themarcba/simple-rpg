@@ -53,8 +53,10 @@ export default class Map {
     draw() {
 
         // Prepare canvas (draw full width and height with standard color)
-        let canvasWidth = (this.fields[0].length + 1) * 100;
-        let canvasHeight = (this.fields.length + 1) * 100;
+        let numberOfRows = this.fields.length;
+        let numberOfColumns = Math.max(...this.fields.map(field => field.length));
+        let canvasWidth = (numberOfColumns + 1) * 100;
+        let canvasHeight = (numberOfRows + 1) * 100;
         UIController.prepareMapCanvas(canvasWidth, canvasHeight);
 
         for (let i = 0; i < this.fields.length; i++) {
@@ -87,20 +89,20 @@ export default class Map {
     connectFields(field1, field2, side) {
         switch (side) {
             case 'north':
-                field1.north = field2;
-                field2.south = field1;
+                if(field1) field1.north = field2;
+                if(field2) field2.south = field1;
                 break;
             case 'east':
-                field1.east = field2;
-                field2.west = field1;
+                if(field1) field1.east = field2;
+                if(field2) field2.west = field1;
                 break;
             case 'south':
-                field1.south = field2;
-                field2.north = field1;
+                if(field1) field1.south = field2;
+                if(field2) field2.north = field1;
                 break;
             case 'west':
-                field1.west = field2;
-                field2.east = field1;
+                if(field1) field1.west = field2;
+                if(field2) field2.east = field1;
                 break;
 
             default:

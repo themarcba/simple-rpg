@@ -24,7 +24,10 @@ export default class Affectable {
             switch (typeof effect.value) {
                 case 'number':
                     let newNumber = this[effect.prop] + effect.value;
-                    this[effect.prop] = newNumber < 100 ? newNumber : 100;
+                    if(newNumber < 0)  newNumber = 0;
+                    else if(newNumber > 100) newNumber = 100;
+
+                    this[effect.prop] = newNumber;
                     break;
                 case 'boolean':
                     this[effect.prop] = effect.value;
@@ -33,7 +36,7 @@ export default class Affectable {
                     console.error(`effect ${effect.name} has an invalid value type`);
                     break;
             }
-            console.log(`changed ${effect.prop} to ${this[effect.prop]}`);    
+            SystemLog.write(`changed ${effect.prop} to ${this[effect.prop]}`);    
 
         }
     }

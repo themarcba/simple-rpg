@@ -4,10 +4,12 @@ import UIController from './UIController';
 import {
     setTimeout
 } from 'timers';
-import HealthPotion from './Items/Liquids/HealthPotion';
-import DeathPotion from './Items/Liquids/DeathPotion';
-import SwimPotion from './Items/Liquids/SwimPotion';
+import HealthPotion from './Items/HealthPotion';
+import DeathPotion from './Items/DeathPotion';
 import Affectable from './Effects/Affectable';
+import Item from './Items/Item';
+import Effect from './Effects/Effect';
+import Action from './Effects/Action';
 
 export default class Player extends Affectable {
 
@@ -17,21 +19,26 @@ export default class Player extends Affectable {
      * @param {Map} map
      */
     constructor(name, map) {
-        super(['drink', 'smell']); // can be affected by...
+        super(['drink', 'smell', 'eat']); // can be affected by...
         window._player = this;
         this.name = name;
         this.health = 100;
-        this.hydration = 2;
+        this.hydration = 50;
         this.sad = false;
         this.map = map;
         this.currentField = map.spawnPoint;
         this.canSwim = false;
         this.isControlDisabled = false;
-        this.backpack = {
-            liquids: [new HealthPotion(), new SwimPotion(), new DeathPotion()],
-            weapons: [],
-            miscellaneous: []
-        };
+        this.backpack = [new HealthPotion(), new DeathPotion()];
+        this.backpack.push(new Item('Walk-on-Water Burger', 'gives the user immediate ability to walk on water',
+            [new Action('eat',
+                [new Effect('canSwim', true)]
+            )],
+            () => {
+                SystemLog('🍔 wow, this burger is amazing!');
+            },
+            false
+        ));
 
         this.map.moveMap(this.currentField.coordinates);
 
@@ -39,6 +46,10 @@ export default class Player extends Affectable {
 
 
 
+    }
+
+    propertiesUpdated() {
+        UIController.updateHealth(this.health);
     }
 
     move(direction) {
@@ -96,7 +107,7 @@ export default class Player extends Affectable {
     }
 
     removeFromBackpack(itemToRemove, itemType) {
-        this.backpack[itemType] = this.backpack[itemType].filter(item => item !== itemToRemove);
+        this.backpack = this.backpack.filter(item => item !== itemToRemove);
     }
 
     canMove() {

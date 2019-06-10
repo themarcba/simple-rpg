@@ -1,5 +1,4 @@
-import Liquid from './Liquid';
-import SystemLog from '../../SystemLog';
+import SystemLog from '../SystemLog';
 
 export default class Repelent extends Liquid {
 

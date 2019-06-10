@@ -92,29 +92,28 @@ class UIController {
         }, milliseconds);
     }
 
-    static buildBackpackView(player, itemType) {
-        let el = document.getElementById(itemType);
-        let backpackCompartment = player.backpack[itemType];
-        el.innerHTML = `<h2>${itemType}</h2>`;
-        backpackCompartment.forEach((liquid, itemIndex) => {
+    static buildBackpackView(player) {
+        let el = document.getElementById('items');
+        el.innerHTML = '';
+        player.backpack.forEach((item, itemIndex) => {
             let actionsHTML = ``;
 
-            liquid.actions.map(action => action.name).forEach((actionName) => {
-                actionsHTML += `<div class="${actionName} action" data-action="${actionName}" data-item-id="${itemIndex}" data-item-type="${itemType}">${actionName}</div>`;
+            item.actions.map(action => action.name).forEach((actionName) => {
+                actionsHTML += `<div class="${actionName} action" data-action="${actionName}" data-item-id="${itemIndex}">${actionName}</div>`;
             });
             let html = `
             <div class="item">
                 <div class="title">
                     <span class="icon">🧪</span>
-                    <span class="name">${liquid.name}</span>
+                    <span class="name">${item.name}</span>
                 </div>
-                <div class="description">${liquid.description}</div>
+                <div class="description">${item.description}</div>
                 <div class="actions">
                     ${actionsHTML}
                 </div>
             </div>
             `;
-            document.querySelector('#liquids').innerHTML += html;
+            document.getElementById('items').innerHTML += html;
         });
         UIController.showBackpack(false);
     }
