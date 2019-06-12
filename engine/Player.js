@@ -56,7 +56,7 @@ export default class Player extends Affectable {
 
         if (this.health > 0) {
 
-            if (this.currentField[direction] && this.currentField[direction].canMove) {
+            if (this.currentField[direction] && this.currentField[direction].isWalkable()) {
                 UIController.showWalkingAnimation(this, direction);
                 this.currentField = this.currentField[direction];
                 SystemLog.write(`🚶🏼‍moved ${direction}. now on ${this.currentField.constructor.name.toLowerCase()}.`);
@@ -64,8 +64,8 @@ export default class Player extends Affectable {
                     this.currentField.enterAction(this);
                 }
             } else {
-                if (this.currentField[direction] && !this.currentField[direction].canMove) {
-                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].cantMoveReason}`);
+                if (this.currentField[direction] && !this.currentField[direction].isWalkable()) {
+                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].notWalkableReason()}`);
                 } else {
                     SystemLog.write(`🚫 can't move here. there is nothing there.`);
                 }

@@ -2,9 +2,9 @@ import Field from './Field';
 import Hazard from '../Hazard';
 
 export default class Grass extends Field {
-    constructor(coordX, coordY) {
-        super(coordX, coordY);
-        this.canMove = true;
+    constructor(coordX, coordY, attached) {
+        super(coordX, coordY, attached);
+        this.walkable = true;
     }
 
     static textureFile() {

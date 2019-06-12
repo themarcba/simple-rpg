@@ -19,13 +19,13 @@ export default class Map {
      * @param {Field} FieldClass
      * @returns {*}
      */
-    addField(coordX, coordY, FieldClass) {
+    addField(coordX, coordY, FieldClass, attached = {item: null, body: null}) {
         // create row if it doesn't exist
         if (!this.fields[coordX]) {
             this.fields[coordX] = [];
         }
         
-        let newField = this.fields[coordY][coordX] = new FieldClass(coordX, coordY);
+        let newField = this.fields[coordY][coordX] = new FieldClass(coordX, coordY, attached);
 
         // row above (Y-1), same X
         if (this.fields[coordY - 1] && this.fields[coordY - 1][coordX]) {

@@ -64,17 +64,31 @@ class UIController {
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    static drawFieldToMap(coordX, coordY, FieldClass) {
+    static drawFieldToMap(coordX, coordY, field) {
         let ctx = document.getElementById('map').getContext("2d");
         let imageFile = "";
 
 
-        let img = new Image();
-        img.onload = function() {
-            ctx.drawImage(img, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
-        }
+        let fieldImg = new Image();
+        fieldImg.onload = function() {
+            ctx.drawImage(fieldImg, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
+        };
+        fieldImg.src = `images/${field.constructor.textureFile()}`;
 
-        img.src = `images/${FieldClass.textureFile()}`;
+        if(field.attached.item) {
+            let itemImg = new Image();
+            itemImg.onload = function() {
+                ctx.drawImage(itemImg, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
+            };
+            itemImg.src = `images/${field.attached.item.constructor.textureFile()}`;    
+        }
+        if(field.attached.body) {
+            let bodyImg = new Image();
+            bodyImg.onload = function() {
+                ctx.drawImage(bodyImg, (coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
+            };
+            bodyImg.src = `images/${field.attached.body.constructor.textureFile()}`;    
+        }
 
         ctx.fillRect((coordX + 1) * 100, (coordY + 1) * 100, 100, 100);
     }

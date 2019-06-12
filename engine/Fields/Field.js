@@ -1,22 +1,35 @@
 import SystemLog from '../SystemLog';
 import UIController from '../UIController';
+import Affectable from '../Effects/Affectable';
 
-export default class Field {
-    constructor(coordX, coordY, item = null) {
+export default class Field extends Affectable {
+    constructor(coordX, coordY, attached = {
+        item: null,
+        body: null
+    }) {
+        super([]);
         this.coordinates = {
             x: coordX,
             y: coordY
         };
 
-        this.item = item;
-        
+        this.attached = attached;
+
         SystemLog.write(`✨ new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`, {
             displayToUser: false,
             addToHistory: false
         });
     }
+    
+    isWalkable() {
+        return this.walkable && (this.attached.body && this.attached.body.isWalkable || !this.attached.body);
+    }
+
+    notWalkableReason() {
+        return (this.attached.body && !this.attached.body.isWalkable) ? this.attached.body.notWalkableReason : this.notWalkableReason();
+    }
 
     draw() {
-        UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this.constructor);
+        UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this);
     }
 }

@@ -9,10 +9,11 @@ export default class HealthPotion extends Item {
         super();
         this.name = 'health potion';
         this.description = `rises user's health by 50.`;
+
         this.actions = [
             new Action('drink',
                 [
-                    new Effect('health', 10),
+                    new Effect('health', 50),
                     new Effect('hydration', 30)
                 ],
                 () => {
@@ -26,5 +27,9 @@ export default class HealthPotion extends Item {
                 }
             )  
         ];
+    }
+
+    static textureFile() {
+        return 'health_potion.png';
     }
 }

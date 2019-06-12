@@ -4,10 +4,10 @@ import Player from '../engine/Player';
 
 import Grass from '../engine/Fields/Grass';
 import Road from '../engine/Fields/Road';
-import Tree from '../engine/Fields/Tree';
 import Water from '../engine/Fields/Water';
 
 import UIController from '../engine/UIController';
+import Tree from '../engine/Bodies/Tree';
 
 class Game {
 
@@ -45,7 +45,9 @@ class Game {
         // Row 2
         this.map.addField(0, 1, Water);
         this.map.addField(1, 1, Grass);
-        this.map.addField(2, 1, Road);
+        this.map.addField(2, 1, Road, {
+            body: new Tree()
+        });
         this.map.addField(3, 1, Grass);
         this.map.addField(4, 1, Water);
 
@@ -105,9 +107,11 @@ class Game {
         this.map.addField(6, 5, Water);
         this.map.addField(7, 5, Water);
         this.map.addField(8, 5, Road);
-        this.map.addField(9, 5, Road);
+        this.map.addField(9, 5, Road, {
+            body: new Tree()
+        });
 
-        this.map.addField(10, 5, Tree);
+        this.map.addField(10, 5, Road);
         this.map.addField(11, 5, Road);
         this.map.addField(12, 5, Road);
         this.map.addField(13, 5, Road);

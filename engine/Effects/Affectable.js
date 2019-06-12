@@ -23,7 +23,7 @@ export default class Affectable {
         if(this.hasOwnProperty(effect.prop)) {
             switch (typeof effect.value) {
                 case 'number':
-                    let newNumber = this[effect.prop] + effect.value;
+                    let newNumber =  + this[effect.prop] + effect.value;
                     if(newNumber < 0)  newNumber = 0;
                     else if(newNumber > 100) newNumber = 100;
 

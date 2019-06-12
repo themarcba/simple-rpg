@@ -13,7 +13,7 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 # Status
 * You can create a map with 4 different "field" types (road, grass, wall, water) and walk around in it.
   * Road: Normal walk
-  * Grass: Walk, but 50% risk of getting stung by a bug
+  * Grass: Walk, but risk of getting stung by a bug
   * Wall: Can't walk. Is seen as obstacle
   * Water: Can technically walk on it, but will drown if the player can't swim
 * Animated character
@@ -50,6 +50,15 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Making it easier to create objects that can have an effect on other objects
 * Extended map to 10x10 so I can lay out a story
 * Added a tree class (which will be able to cut down with a tool)
+
+## 11/06/2019
+* Added new graphics
+* Can now add items to field for the player to pick up
+
+## 12/06/2019
+* Added "Body" that can be attached to a field (e.g. Tree). Different from Item is: It can't be picked up.
+* Moved tree from Item to Body
+
 
 # Install
 
