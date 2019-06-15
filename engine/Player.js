@@ -19,7 +19,7 @@ export default class Player extends Affectable {
      * @param {Map} map
      */
     constructor(name, map) {
-        super(['drink', 'smell', 'eat', 'sting', 'drownx']); // can be affected by...
+        super(['drink', 'smell', 'eat', 'sting', 'drown']); // can be affected by...
         window._player = this;
         this.name = name;
         this.health = 100;
@@ -29,16 +29,16 @@ export default class Player extends Affectable {
         this.currentField = map.spawnPoint;
         this.canSwim = false;
         this.isControlDisabled = false;
-        this.backpack = [new HealthPotion(), new DeathPotion()];
-        this.backpack.push(new Item('Walk-on-Water Burger', 'gives the user immediate ability to walk on water',
-            [new Action('eat',
-                [new Effect('canSwim', true)]
-            )],
-            () => {
-                SystemLog('🍔 wow, this burger is amazing!');
-            },
-            false
-        ));
+        this.backpack = [];
+        // this.backpack.push(new Item('Walk-on-Water Burger', 'gives the user immediate ability to walk on water',
+        //     [new Action('eat',
+        //         [new Effect('canSwim', true)]
+        //     )],
+        //     () => {
+        //         SystemLog('🍔 wow, this burger is amazing!');
+        //     },
+        //     false
+        // ));
 
         this.map.moveMap(this.currentField.coordinates);
 
@@ -103,11 +103,11 @@ export default class Player extends Affectable {
         this.backpack.liquids = this.backpack.liquids.filter(item => item !== liquid);
     }
 
-    addToBackpack(item, itemType) {
-        this.backpack[itemType].push(item);
+    addToBackpack(item) {
+        this.backpack.push(item);
     }
 
-    removeFromBackpack(itemToRemove, itemType) {
+    removeFromBackpack(itemToRemove) {
         this.backpack = this.backpack.filter(item => item !== itemToRemove);
     }
 

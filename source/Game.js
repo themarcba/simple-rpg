@@ -8,6 +8,7 @@ import Water from '../engine/Fields/Water';
 
 import UIController from '../engine/UIController';
 import Tree from '../engine/Bodies/Tree';
+import HealthPotion from '../engine/Items/HealthPotion';
 
 class Game {
 
@@ -46,7 +47,7 @@ class Game {
         this.map.addField(0, 1, Water);
         this.map.addField(1, 1, Grass);
         this.map.addField(2, 1, Road, {
-            body: new Tree()
+            item: new HealthPotion()
         });
         this.map.addField(3, 1, Grass);
         this.map.addField(4, 1, Water);

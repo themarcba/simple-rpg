@@ -12,13 +12,7 @@ export default class Field extends Affectable {
             x: coordX,
             y: coordY
         };
-
         this.attached = attached;
-
-        // SystemLog.write(`✨ new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`, {
-        //     displayToUser: false,
-        //     addToHistory: false
-        // });
     }
     
     isWalkable() {
@@ -31,5 +25,16 @@ export default class Field extends Affectable {
 
     draw() {
         UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this);
+    }
+
+    enterAction(player) {
+        if(this.attached.item) {
+            player.addToBackpack(this.attached.item);
+            this.attached.item = null;
+            setTimeout(() => {
+                this.draw();
+            }, 1000);
+        }
+        UIController.buildBackpackView(player);
     }
 }
