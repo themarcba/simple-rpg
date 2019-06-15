@@ -47,7 +47,7 @@ class Game {
         this.map.addField(0, 1, Water);
         this.map.addField(1, 1, Grass);
         this.map.addField(2, 1, Road, {
-            item: new HealthPotion()
+            body: new Tree()
         });
         this.map.addField(3, 1, Grass);
         this.map.addField(4, 1, Water);
@@ -84,7 +84,9 @@ class Game {
 
         this.map.addField(5, 3, Water);
         this.map.addField(6, 3, Water);
-        this.map.addField(7, 3, Road);
+        this.map.addField(7, 3, Road, {
+            item: new HealthPotion()
+        });
         this.map.addField(8, 3, Road);
         this.map.addField(9, 3, Water);
 

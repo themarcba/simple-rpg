@@ -59,6 +59,9 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Added "Body" that can be attached to a field (e.g. Tree). Different from Item is: It can't be picked up.
 * Moved tree from Item to Body
 
+## 15/06/2019
+* Removed Hazards, replaced them with Actions
+* Added pick-up for items that are attached to a field
 
 # Install
 

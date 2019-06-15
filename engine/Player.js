@@ -1,15 +1,8 @@
 import SystemLog from './SystemLog';
 import Map from './Map';
 import UIController from './UIController';
-import {
-    setTimeout
-} from 'timers';
-import HealthPotion from './Items/HealthPotion';
-import DeathPotion from './Items/DeathPotion';
 import Affectable from './Effects/Affectable';
-import Item from './Items/Item';
-import Effect from './Effects/Effect';
-import Action from './Effects/Action';
+import Axe from './Items/Axe';
 
 export default class Player extends Affectable {
 
@@ -29,7 +22,7 @@ export default class Player extends Affectable {
         this.currentField = map.spawnPoint;
         this.canSwim = false;
         this.isControlDisabled = false;
-        this.backpack = [];
+        this.backpack = [new Axe()];
         // this.backpack.push(new Item('Walk-on-Water Burger', 'gives the user immediate ability to walk on water',
         //     [new Action('eat',
         //         [new Effect('canSwim', true)]
@@ -60,9 +53,7 @@ export default class Player extends Affectable {
                 UIController.showWalkingAnimation(this, direction);
                 this.currentField = this.currentField[direction];
                 SystemLog.write(`🚶🏼‍moved ${direction}. now on ${this.currentField.constructor.name.toLowerCase()}.`);
-                if (this.currentField.enterAction) {
-                    this.currentField.enterAction(this);
-                }
+                this.currentField.enter(this);
             } else {
                 UIController.turnPlayerInDirection(this, direction);
                 if (this.currentField[direction] && !this.currentField[direction].isWalkable()) {

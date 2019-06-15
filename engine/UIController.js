@@ -122,7 +122,6 @@ class UIController {
             let html = `
             <div class="item">
                 <div class="title">
-                    <span class="icon">🧪</span>
                     <span class="name">${item.name}</span>
                 </div>
                 <div class="description">${item.description}</div>

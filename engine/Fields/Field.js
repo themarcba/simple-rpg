@@ -27,7 +27,7 @@ export default class Field extends Affectable {
         UIController.drawFieldToMap(this.coordinates.x, this.coordinates.y, this);
     }
 
-    enterAction(player) {
+    enter(player) {
         if(this.attached.item) {
             player.addToBackpack(this.attached.item);
             this.attached.item = null;
@@ -36,5 +36,6 @@ export default class Field extends Affectable {
             }, 1000);
         }
         UIController.buildBackpackView(player);
+        if (this.enterFn) this.enterFn(player);
     }
 }
