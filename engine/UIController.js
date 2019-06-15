@@ -39,6 +39,10 @@ class UIController {
         }, 100);
     }
 
+    static turnPlayerInDirection(player, direction) {
+        document.getElementById('player').className = `walk ${direction}`;
+    }
+
     static showWalkingAnimation(player, direction) {
         document.getElementById('player').className = `walk walking ${direction}`;
 

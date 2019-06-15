@@ -5,16 +5,22 @@ export default class Affectable {
         this.affectableBy = affectableBy;
     }
 
-    process(target, actionName) {
+    processAction(target, actionName) {
         let action = target.actions.filter(action => action.name == actionName)[0];
-        if(this.affectableBy.includes(actionName)) {
+        return this.process(action);
+    }
+
+    process(action) {
+        if(this.affectableBy.includes(action.name)) {
             action.effects.forEach(effect => {
                 this.applyEffect(effect);
             });
-    
+            
+            if(this.onAffected) this.onAffected();
             if(action.callback) action.callback();
             return true;
         } else {
+            SystemLog.write(`🤷‍ NOT affectable by ${action.name}`);
             return false;
         }
     }
@@ -36,8 +42,9 @@ export default class Affectable {
                     console.error(`effect ${effect.name} has an invalid value type`);
                     break;
             }
-            SystemLog.write(`changed ${effect.prop} to ${this[effect.prop]}`);    
-
+            SystemLog.write(`👉 changed ${effect.prop} to ${this[effect.prop]}`);    
+        } else {
+            SystemLog.write(`🤷‍ doesn't have property ${effect.prop}`);
         }
     }
 

@@ -2,9 +2,9 @@ import SystemLog from '../SystemLog';
 import UIController from '../UIController';
 import Affectable from '../Effects/Affectable';
 
-export default class Field extends Affectable {
-    constructor(affectableBy = [], walkable = false) {
+export default class Body extends Affectable {
+    constructor(affectableBy = [], notWalkableReason = null) {
         super(affectableBy);
-        this.walkable = walkable;
+        this.notWalkableReason = notWalkableReason;
     }
 }

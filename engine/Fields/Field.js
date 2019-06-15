@@ -15,18 +15,18 @@ export default class Field extends Affectable {
 
         this.attached = attached;
 
-        SystemLog.write(`✨ new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`, {
-            displayToUser: false,
-            addToHistory: false
-        });
+        // SystemLog.write(`✨ new ${this.constructor.name} created at (${this.coordinates.x}, ${this.coordinates.y})`, {
+        //     displayToUser: false,
+        //     addToHistory: false
+        // });
     }
     
     isWalkable() {
-        return this.walkable && (this.attached.body && this.attached.body.isWalkable || !this.attached.body);
+        return !this.notWalkableReason && ((this.attached.body && !this.attached.body.notWalkableReason) || !this.attached.body);
     }
 
-    notWalkableReason() {
-        return (this.attached.body && !this.attached.body.isWalkable) ? this.attached.body.notWalkableReason : this.notWalkableReason();
+    getNotWalkableReason() {
+        return (this.attached.body && this.attached.body.notWalkableReason) ? this.attached.body.notWalkableReason : this.notWalkableReason;
     }
 
     draw() {

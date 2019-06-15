@@ -53,8 +53,12 @@ class Game {
 
         this.map.addField(5, 1, Water);
         this.map.addField(6, 1, Water);
-        this.map.addField(7, 1, Road);
-        this.map.addField(8, 1, Road);
+        this.map.addField(7, 1, Road, {
+            body: new Tree()
+        });
+        this.map.addField(8, 1, Road, {
+            body: new Tree()
+        });
         this.map.addField(9, 1, Water);
 
         // Row 3
@@ -221,7 +225,7 @@ class Game {
                 let itemId = e.target.getAttribute('data-item-id');
                 let item = _this.player.backpack[itemId];
 
-                if (_this.player.process(item, actionName)) {
+                if (_this.player.processAction(item, actionName)) {
                     if (item.oneTimeUse) _this.player.removeFromBackpack(item);
                     UIController.updateHealth(_this.player.health);
                 } else {

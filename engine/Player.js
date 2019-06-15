@@ -19,7 +19,7 @@ export default class Player extends Affectable {
      * @param {Map} map
      */
     constructor(name, map) {
-        super(['drink', 'smell', 'eat']); // can be affected by...
+        super(['drink', 'smell', 'eat', 'sting', 'drownx']); // can be affected by...
         window._player = this;
         this.name = name;
         this.health = 100;
@@ -43,13 +43,13 @@ export default class Player extends Affectable {
         this.map.moveMap(this.currentField.coordinates);
 
         UIController.buildBackpackView(this, 'liquids');
-
-
-
     }
 
-    propertiesUpdated() {
+    onAffected() {
         UIController.updateHealth(this.health);
+        if (this.health == 0) {
+            UIController.showGameOver();
+        }
     }
 
     move(direction) {
@@ -64,8 +64,9 @@ export default class Player extends Affectable {
                     this.currentField.enterAction(this);
                 }
             } else {
+                UIController.turnPlayerInDirection(this, direction);
                 if (this.currentField[direction] && !this.currentField[direction].isWalkable()) {
-                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].notWalkableReason()}`);
+                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].getNotWalkableReason()}`);
                 } else {
                     SystemLog.write(`🚫 can't move here. there is nothing there.`);
                 }
