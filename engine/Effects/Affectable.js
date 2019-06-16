@@ -5,11 +5,6 @@ export default class Affectable {
         this.affectableBy = affectableBy;
     }
 
-    processAction(target, actionName) {
-        let action = target.actions.filter(action => action.name == actionName)[0];
-        return this.process(action);
-    }
-
     process(action) {
         if(this.affectableBy.includes(action.name)) {
             action.effects.forEach(effect => {
@@ -20,7 +15,7 @@ export default class Affectable {
             if(action.callback) action.callback();
             return true;
         } else {
-            SystemLog.write(`🤷‍ NOT affectable by ${action.name}`);
+            SystemLog.write(`🤷‍ ${this.constructor.name} NOT affectable by ${action.name}`);
             return false;
         }
     }

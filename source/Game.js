@@ -230,9 +230,6 @@ class Game {
 
                 if (_this.player.processAction(item, actionName)) {
                     if (item.oneTimeUse) _this.player.removeFromBackpack(item);
-                    UIController.updateHealth(_this.player.health);
-                } else {
-                    SystemLog.write(`${_this.player.name} is not affectable by ${actionName}`);
                 }
             }
             UIController.buildBackpackView(_this.player);

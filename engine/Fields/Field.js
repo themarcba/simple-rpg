@@ -13,6 +13,7 @@ export default class Field extends Affectable {
             y: coordY
         };
         this.attached = attached;
+        if(this.attached.body) this.attached.body.field = this;
     }
     
     isWalkable() {

@@ -9,6 +9,7 @@ export default class Axe extends Item {
         super();
         this.name = 'axe';
         this.description = `is good at cutting things down`;
+        this.oneTimeUse = false;
         this.actions = [
             new Action('cut',
                 [new Effect('damage', 100)],

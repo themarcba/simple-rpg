@@ -1,3 +1,4 @@
+import SystemLog from '../SystemLog';
 import Body from './Body';
 
 export default class Tree extends Body {
@@ -15,8 +16,10 @@ export default class Tree extends Body {
     }
 
     onAffected() {
-        if(damage >= 100) {
+        if(this.damage >= 100) {
             SystemLog.write('🌳 tree down');
+            this.field.attached.body = null;
+            this.field.draw();
         } else {
             SystemLog.write(`🌳 damage ${this.damage}%`);
         }

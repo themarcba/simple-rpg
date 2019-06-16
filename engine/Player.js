@@ -3,6 +3,7 @@ import Map from './Map';
 import UIController from './UIController';
 import Affectable from './Effects/Affectable';
 import Axe from './Items/Axe';
+import HealthPotion from './Items/HealthPotion';
 
 export default class Player extends Affectable {
 
@@ -16,13 +17,13 @@ export default class Player extends Affectable {
         window._player = this;
         this.name = name;
         this.health = 100;
-        this.hydration = 50;
+        this.currentDirection = 'north';
         this.sad = false;
         this.map = map;
         this.currentField = map.spawnPoint;
         this.canSwim = false;
         this.isControlDisabled = false;
-        this.backpack = [new Axe()];
+        this.backpack = [new Axe(), new HealthPotion()];
         // this.backpack.push(new Item('Walk-on-Water Burger', 'gives the user immediate ability to walk on water',
         //     [new Action('eat',
         //         [new Effect('canSwim', true)]
@@ -46,7 +47,7 @@ export default class Player extends Affectable {
     }
 
     move(direction) {
-
+        this.currentDirection = direction;
         if (this.health > 0) {
 
             if (this.currentField[direction] && this.currentField[direction].isWalkable()) {
@@ -104,5 +105,16 @@ export default class Player extends Affectable {
 
     canMove() {
         return (this.health > 0) && !this.isControlDisabled;
+    }
+
+    processAction(item, actionName) {
+        let action = item.actions.filter(action => action.name == actionName)[0];
+        let target = this;
+        
+        if(action.name == 'cut' && this.currentField[this.currentDirection] && this.currentField[this.currentDirection].attached.body) {
+            target = this.currentField[this.currentDirection].attached.body;
+        }
+        
+        return target.process(action);
     }
 }
