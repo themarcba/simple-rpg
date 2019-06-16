@@ -16,10 +16,25 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
   * Grass: Walk, but risk of getting stung by a bug
   * Wall: Can't walk. Is seen as obstacle
   * Water: Can technically walk on it, but will drown if the player can't swim
+* On every field can be attached an item (something the player can pick up and use) and a body (which cannot be taken moved from the field)
+* Actions that have Effects, which affect anything that extends the Affectable class AND is affectable by that action
 * Animated character
 * Textured map
 * Game over display
 
+# How it works
+
+** *This section is still under construction* **
+
+## Maps and Fields
+
+The map is an object which is made up of fields. It is only used to create a map out of the fields. Because the fields are independent from the map.
+
+Each field has a north, east, south, west. Each of which can contain another field reference. So when a field is added to the map with `addField`, it will check in the matrix if there are neighboring fields that need to be connected to the N/E/S/W directions.
+
+## Player
+
+The player moved through the map, or better said the fields. When he moves (`move(direction)`) into a direction, all he does is update his `currentField` to the direction in which he moved.
 
 # Changelog
 ## 20/05/2019
