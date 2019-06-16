@@ -63,6 +63,10 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 * Removed Hazards, replaced them with Actions
 * Added pick-up for items that are attached to a field
 
+## 16/06/2019
+* Added Axe
+* Able to chop down trees with Axe
+
 # Install
 
 Install needed packages:
