@@ -103,9 +103,19 @@ class UIController {
     }
 
     moveMap(coordinates) {
+        let screenWidth = document.getElementById('screen').offsetWidth;
+        let screenHeight = parseInt(document.getElementById('screen').offsetHeight);
+        let canvasWidth = document.getElementById('map').offsetWidth;
+        let canvasHeight = parseInt(document.getElementById('map').offsetHeight);
         let mapCanvas = document.getElementById('map');
-        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `-${(coordinates.x - 1) * 100}px` : '100px';
-        mapCanvas.style.marginTop = (coordinates.y > 0) ? `-${(coordinates.y - 1) * 100}px` : '100px';
+        let marginLeft = (coordinates.x - 1) * 100;
+        let marginTop = (coordinates.y - 1) * 100;
+        // let marginLeft = (coordinates.x - 1) * 100 - ((screenWidth - 500) / 2);
+        // let marginTop = (coordinates.y - 1) * 100 - ((screenHeight - 500) / 2);
+        console.log(marginLeft);
+        // 1050-100-800
+        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `-${marginLeft}px` : '100px';
+        mapCanvas.style.marginTop = (coordinates.y > 0) ? `-${marginTop}px` : '100px';
     }
 
     disableControlsForMilliseconds(player, milliseconds) {

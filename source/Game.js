@@ -182,7 +182,7 @@ class Game {
         this.map.addField(8, 9, Grass);
         this.map.addField(9, 9, Grass);
 
-        this.map.setSpawnPoint(this.map.fields[2][2]);
+        this.map.setSpawnPoint(this.map.fields[2][5]);
 
         this.map.draw();
 

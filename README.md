@@ -92,6 +92,8 @@ The player moved through the map, or better said the fields. When he moves (`mov
 
 ## 17/06/2019
 * Added messages in the screen element
+* Added mobile swipe gestures
+
 
 # Install
 
