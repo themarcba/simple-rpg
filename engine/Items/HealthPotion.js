@@ -17,13 +17,17 @@ export default class HealthPotion extends Item {
                     new Effect('hydration', 30)
                 ],
                 () => {
-                    SystemLog.write('the potion tastes really good 🤩');
+                    SystemLog.write('the potion tastes really good 🤩', {
+                        displayToDialog: true
+                    });
                 }
             ),
             new Action('smell',
                 [new Effect('health', -5)],
                 () => {
-                    SystemLog.write('the potion smells awful 😷');
+                    SystemLog.write('the potion smells awful 😷', {
+                        displayToDialog: true
+                    });
                 }
             )  
         ];

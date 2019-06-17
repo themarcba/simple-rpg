@@ -217,6 +217,9 @@ class Game {
                     case 32: // space
                         UIController.showBackpack();
                         break;
+                    case 13: // space
+                        UIController.hideDialog();
+                        break;
 
                 }
             }

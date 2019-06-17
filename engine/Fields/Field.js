@@ -29,11 +29,15 @@ export default class Field extends Affectable {
     }
 
     enter(player) {
-        if(this.attached.item) {
-            player.addToBackpack(this.attached.item);
+        let addedItem = this.attached.item;
+        if(addedItem) {
+            player.addToBackpack(addedItem);
             this.attached.item = null;
             setTimeout(() => {
                 this.draw();
+                SystemLog.write(`🎒 added ${addedItem.name} to the backpack`, {
+                    displayToDialog: true
+                });    
             }, 1000);
         }
         UIController.buildBackpackView(player);

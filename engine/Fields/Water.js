@@ -11,7 +11,9 @@ export default class Water extends Field {
                 let drown = new Action('drown',
                     [new Effect('health', -100, 1)],
                     () => {
-                        SystemLog.write(`💀 ${player.name} drowned`);
+                        SystemLog.write(`💀 ${player.name} drowned`, {
+                            displayToDialog: true
+                        });
                     }
                 );
                 player.process(drown);

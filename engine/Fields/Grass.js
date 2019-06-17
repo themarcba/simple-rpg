@@ -2,6 +2,7 @@ import SystemLog from '../SystemLog';
 import Field from './Field';
 import Effect from '../Effects/Effect';
 import Action from '../Effects/Action';
+import UIController from '../UIController';
 
 export default class Grass extends Field {
     constructor(coordX, coordY, attached) {
@@ -11,7 +12,9 @@ export default class Grass extends Field {
             let bugSting = new Action('sting',
                 [new Effect('health', -15)],
                 () => {
-                    SystemLog.write(`🐞 ${player.name} got stung by a bug`);
+                    SystemLog.write(`🐞 ${player.name} got stung by a bug`, {
+                        displayToDialog: true
+                    });
                 }
             );
             if (Math.random() <= bugStingProbability) player.process(bugSting);
@@ -20,7 +23,9 @@ export default class Grass extends Field {
             let killerBee = new Action('sting',
                 [new Effect('health', -80)],
                 () => {
-                    SystemLog.write(`🐝 ${player.name} got stung by a killer bee.`);
+                    SystemLog.write(`🐝 ${player.name} got stung by a killer bee.`, {
+                        displayToDialog: true
+                    });
                 }
             );
             if (Math.random() <= killerBeeProbability) player.process(killerBee);

@@ -58,14 +58,20 @@ export default class Player extends Affectable {
             } else {
                 UIController.turnPlayerInDirection(this, direction);
                 if (this.currentField[direction] && !this.currentField[direction].isWalkable()) {
-                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].getNotWalkableReason()}`);
+                    SystemLog.write(`🚫 can't move here. ${this.currentField[direction].getNotWalkableReason()}`, {
+                        displayToDialog: true
+                    });
                 } else {
-                    SystemLog.write(`🚫 can't move here. there is nothing there.`);
+                    SystemLog.write(`🚫 can't move here. there is nothing there.`, {
+                        displayToDialog: true
+                    });
                 }
             }
 
         } else {
-            SystemLog.write(`😵 ${this.name} can't move. he passed out.`);
+            SystemLog.write(`😵 ${this.name} can't move. he passed out.`, {
+                displayToDialog: true
+            });
         }
 
         this.map.moveMap(this.currentField.coordinates);

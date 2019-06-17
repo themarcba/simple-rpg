@@ -24,13 +24,21 @@ In the spirit of working more with OOP in JavaScript, I started this little proj
 
 # How it works
 
-** *This section is still under construction* **
+**! This section is still under construction !**
 
 ## Maps and Fields
 
 The map is an object which is made up of fields. It is only used to create a map out of the fields. Because the fields are independent from the map.
 
 Each field has a north, east, south, west. Each of which can contain another field reference. So when a field is added to the map with `addField`, it will check in the matrix if there are neighboring fields that need to be connected to the N/E/S/W directions.
+
+## Items and Bodies
+
+Each field can contain an Item and a Body.
+
+An **item** is something that will be collected by the player the moment he steps on the field.
+
+A **body** is something that cannot be collected by the player, but possibly being interacted with, for example a Tree (which can be chopped down)
 
 ## Player
 
@@ -81,6 +89,9 @@ The player moved through the map, or better said the fields. When he moves (`mov
 ## 16/06/2019
 * Added Axe
 * Able to chop down trees with Axe
+
+## 17/06/2019
+* Added messages in the screen element
 
 # Install
 

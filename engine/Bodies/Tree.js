@@ -17,11 +17,15 @@ export default class Tree extends Body {
 
     onAffected() {
         if(this.damage >= 100) {
-            SystemLog.write('🌳 tree down');
+            SystemLog.write('🌳 tree chopped down', {
+                displayToDialog: true
+            });
             this.field.attached.body = null;
             this.field.draw();
         } else {
-            SystemLog.write(`🌳 damage ${this.damage}%`);
+            SystemLog.write(`🌳 damage on tree ${this.damage}%`, {
+                displayToDialog: true
+            });
         }
     }
 

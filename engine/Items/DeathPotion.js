@@ -13,7 +13,9 @@ export default class DeathPotion extends Item {
             new Action('drink',
                 [new Effect('health', -100)],
                 () => {
-                    SystemLog.write('ugh. something is wrong with this drink...');
+                    SystemLog.write('😵 ugh. something is wrong with this drink...', {
+                        displayToDialog: true
+                    });
                 }
             )
         ];
