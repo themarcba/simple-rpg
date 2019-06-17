@@ -153,7 +153,7 @@ class UIController {
     }
 
     showDialog(message, dismissable = true, actions = []) {
-        if(this.dialog.timeout) {
+        if (this.dialog.timeout) {
             clearTimeout(this.dialog.timeout);
             this.dialog.timeout = null;
         }
@@ -161,7 +161,7 @@ class UIController {
         document.getElementById('dialog').className = 'open';
         this.dialog.dismissable = dismissable;
 
-        if(dismissable) {
+        if (dismissable) {
             this.dialog.timeout = setTimeout(() => {
                 document.getElementById('dialog').className = '';
             }, 5000);
@@ -169,7 +169,7 @@ class UIController {
     }
 
     hideDialog() {
-        if(this.dialog.dismissable) {
+        if (this.dialog.dismissable) {
             document.getElementById('dialog').className = '';
         }
     }
