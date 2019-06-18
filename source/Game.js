@@ -15,7 +15,7 @@ class Game {
     constructor(username) {
         this.configure();
         this.build(username);
-        this.attachEvents();        
+        this.attachEvents();
         UIController.initializeUI(this.map);
     }
 
@@ -246,6 +246,14 @@ class Game {
         let hammertime = new Hammer(document.getElementById('screen'), {});
         hammertime.get('swipe').set({
             direction: Hammer.DIRECTION_ALL
+        });
+
+        hammertime.get('tap').set({
+            taps: 2
+        });
+
+        hammertime.on('tap', function(ev){
+            UIController.showBackpack();
         });
 
         hammertime.on('swipe', function(ev) {
