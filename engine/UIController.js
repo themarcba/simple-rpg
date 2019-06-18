@@ -110,12 +110,12 @@ class UIController {
         let mapCanvas = document.getElementById('map');
         let marginLeft = (coordinates.x - 1) * 100;
         let marginTop = (coordinates.y - 1) * 100;
-        // let marginLeft = (coordinates.x - 1) * 100 - ((screenWidth - 500) / 2);
-        // let marginTop = (coordinates.y - 1) * 100 - ((screenHeight - 500) / 2);
-        console.log(marginLeft);
+        marginLeft = -((coordinates.x - 1) * 100 - ((screenWidth - 500) / 2));
+        marginTop = -((coordinates.y - 1) * 100 - ((screenHeight - 500) / 2));
+        console.log(marginLeft, marginTop);
         // 1050-100-800
-        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `-${marginLeft}px` : '100px';
-        mapCanvas.style.marginTop = (coordinates.y > 0) ? `-${marginTop}px` : '100px';
+        mapCanvas.style.marginLeft = (coordinates.x > 0) ? `${marginLeft}px` : '100px';
+        mapCanvas.style.marginTop = (coordinates.y > 0) ? `${marginTop}px` : '100px';
     }
 
     disableControlsForMilliseconds(player, milliseconds) {
