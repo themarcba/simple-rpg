@@ -94,6 +94,9 @@ The player moved through the map, or better said the fields. When he moves (`mov
 * Added messages in the screen element
 * Added mobile swipe gestures
 
+## 18/06/2019
+* Added fullscreen toggle
+* Added double tap event to open backpack
 
 # Install
 
