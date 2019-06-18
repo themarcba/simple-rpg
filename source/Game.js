@@ -1,6 +1,5 @@
 import Hammer from 'hammerjs';
 import Map from '../engine/Map';
-import SystemLog from '../engine/SystemLog';
 import Player from '../engine/Player';
 
 import Grass from '../engine/Fields/Grass';
@@ -16,7 +15,8 @@ class Game {
     constructor(username) {
         this.configure();
         this.build(username);
-        this.attachEvents();
+        this.attachEvents();        
+        UIController.initializeUI(this.map);
     }
 
     /**
@@ -227,16 +227,20 @@ class Game {
         };
 
         document.addEventListener('click', function(e) {
-            if (e.target && e.target.classList.contains('action')) {
-                let actionName = e.target.getAttribute('data-action');
-                let itemId = e.target.getAttribute('data-item-id');
-                let item = _this.player.backpack[itemId];
+            if (e.target.classList.contains('action')) {
+                if (e.target.classList.contains('action')) {
+                    let actionName = e.target.getAttribute('data-action');
+                    let itemId = e.target.getAttribute('data-item-id');
+                    let item = _this.player.backpack[itemId];
 
-                if (_this.player.processAction(item, actionName)) {
-                    if (item.oneTimeUse) _this.player.removeFromBackpack(item);
+                    if (_this.player.processAction(item, actionName)) {
+                        if (item.oneTimeUse) _this.player.removeFromBackpack(item);
+                    }
                 }
+                UIController.buildBackpackView(_this.player);
+            } else if (e.target.id == 'toggleFullscreen') {
+                UIController.toggleFullscreen(_this.player.currentField.coordinates);
             }
-            UIController.buildBackpackView(_this.player);
         });
 
         let hammertime = new Hammer(document.getElementById('screen'), {});
@@ -249,19 +253,19 @@ class Game {
             switch (ev.offsetDirection) {
                 case 8:
                     // north
-                    _this.player.move('north');                    
+                    _this.player.move('north');
                     break;
                 case 4:
                     // east
-                    _this.player.move('east');                    
+                    _this.player.move('east');
                     break;
                 case 16:
                     // south
-                    _this.player.move('south');                    
+                    _this.player.move('south');
                     break;
                 case 2:
                     // west
-                    _this.player.move('west');                    
+                    _this.player.move('west');
                     break;
 
                 default:

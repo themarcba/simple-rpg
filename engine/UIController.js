@@ -1,3 +1,5 @@
+import MobileDetect from 'mobile-detect';
+
 class UIController {
 
     constructor() {
@@ -181,6 +183,24 @@ class UIController {
     hideDialog() {
         if (this.dialog.dismissable) {
             document.getElementById('dialog').className = '';
+        }
+    }
+
+    toggleFullscreen(coordinates) {
+        console.log('toggle', coordinates, document.getElementById('screen').className.includes('full'));
+        
+        if(document.getElementById('screen').className.includes('full')) {
+            document.getElementById('screen').classList.remove('full');
+        } else {
+            document.getElementById('screen').classList.add('full');
+        }
+        this.moveMap(coordinates);
+    }
+
+    initializeUI(map) {
+        let md = new MobileDetect(window.navigator.userAgent);
+        if(md.mobile()) {
+            this.toggleFullscreen(map.spawnPoint.coordinates);
         }
     }
 }
